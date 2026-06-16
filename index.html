@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FDA × EMA｜藥政 AI 應用準則完整導覽 ─ TsRAP 學習資源</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #1c2430;
+    --border: #30363d;
+    --fda: #2563eb;
+    --fda-light: #3b82f6;
+    --ema: #059669;
+    --ema-light: #10b981;
+    --joint: #d97706;
+    --joint-light: #f59e0b;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --text-dim: #6e7681;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans TC', 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,17,23,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0;
+    padding: 0 32px;
+    height: 52px;
+  }
+  .nav-brand {
+    font-size: 13px; font-weight: 700;
+    color: var(--accent); letter-spacing: 0.05em;
+    margin-right: 32px; white-space: nowrap;
+  }
+  .nav-links { display: flex; gap: 0; overflow-x: auto; flex: 1; }
+  .nav-links a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 12.5px; padding: 0 14px; height: 52px;
+    display: flex; align-items: center; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); border-bottom-color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    margin-top: 52px;
+    padding: 80px 32px 60px;
+    max-width: 900px; margin-left: auto; margin-right: auto;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--joint-light);
+    border: 1px solid var(--joint);
+    border-radius: 20px; padding: 4px 14px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 900; line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub {
+    font-size: 16px; color: var(--text-muted); max-width: 620px;
+    margin: 0 auto 36px;
+  }
+  .hero-stats {
+    display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+    margin-top: 40px; padding-top: 36px;
+    border-top: 1px solid var(--border);
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-size: 28px; font-weight: 800;
+    color: var(--accent); display: block;
+  }
+  .stat-label { font-size: 12px; color: var(--text-muted); }
+
+  /* SECTIONS */
+  .section {
+    max-width: 900px; margin: 0 auto;
+    padding: 60px 32px;
+    border-top: 1px solid var(--border);
+  }
+  .section-num {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+    color: var(--text-dim); margin-bottom: 8px;
+  }
+  .section h2 {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 800; margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .section-sub {
+    font-size: 13px; color: var(--text-muted);
+    font-style: italic; margin-bottom: 32px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative; padding-left: 24px;
+    border-left: 2px solid var(--border);
+    margin-top: 16px;
+  }
+  .tl-group { margin-bottom: 32px; }
+  .tl-year {
+    font-size: 12px; font-weight: 700; color: var(--text-dim);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 12px; margin-left: -36px;
+    padding-left: 12px;
+  }
+  .tl-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .tl-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    margin-top: 6px; flex-shrink: 0;
+    margin-left: -29px;
+    border: 2px solid var(--bg);
+  }
+  .tl-dot.fda { background: var(--fda-light); }
+  .tl-dot.ema { background: var(--ema-light); }
+  .tl-dot.joint { background: var(--joint-light); }
+  .tl-content { flex: 1; }
+  .tl-tag {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 4px; margin-bottom: 4px;
+    margin-right: 6px;
+  }
+  .tl-tag.fda { background: rgba(37,99,235,0.2); color: var(--fda-light); }
+  .tl-tag.ema { background: rgba(5,150,105,0.2); color: var(--ema-light); }
+  .tl-tag.joint { background: rgba(217,119,6,0.2); color: var(--joint-light); }
+  .tl-title { font-size: 14px; font-weight: 600; color: var(--text); }
+  .tl-desc { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+  /* DUAL CARD */
+  .dual-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 600px) { .dual-card { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 24px;
+  }
+  .card.fda-card { border-top: 3px solid var(--fda-light); }
+  .card.ema-card { border-top: 3px solid var(--ema-light); }
+  .card.joint-card {
+    border-top: 3px solid var(--joint-light);
+    grid-column: 1 / -1;
+  }
+  .card-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .fda-card .card-label { color: var(--fda-light); }
+  .ema-card .card-label { color: var(--ema-light); }
+  .joint-card .card-label { color: var(--joint-light); }
+  .card h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+  .card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+
+  /* PRINCIPLE TABLE */
+  .principle-list { display: flex; flex-direction: column; gap: 10px; }
+  .principle-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .principle-num {
+    font-size: 12px; font-weight: 800;
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .fda-num { background: rgba(37,99,235,0.2); color: var(--fda-light); }
+  .ema-num { background: rgba(5,150,105,0.2); color: var(--ema-light); }
+  .principle-text { flex: 1; }
+  .principle-title { font-size: 13.5px; font-weight: 600; margin-bottom: 3px; }
+  .principle-desc { font-size: 12.5px; color: var(--text-muted); }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step-item {
+    display: flex; gap: 20px; padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(37,99,235,0.15);
+    border: 1px solid rgba(37,99,235,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; color: var(--fda-light);
+    flex-shrink: 0;
+  }
+  .step-content { flex: 1; }
+  .step-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .step-desc { font-size: 13px; color: var(--text-muted); }
+
+  /* TOOL CARD */
+  .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .tool-grid { grid-template-columns: 1fr; } }
+  .tool-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px;
+  }
+  .tool-name {
+    font-size: 15px; font-weight: 800; margin-bottom: 6px;
+  }
+  .tool-name span {
+    font-size: 11px; font-weight: 400;
+    color: var(--text-muted); margin-left: 8px;
+  }
+  .tool-badge {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    padding: 2px 8px; border-radius: 4px; margin-bottom: 10px;
+  }
+  .badge-fda { background: rgba(37,99,235,0.2); color: var(--fda-light); }
+  .badge-ema { background: rgba(5,150,105,0.2); color: var(--ema-light); }
+  .tool-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .tool-metric {
+    margin-top: 12px; font-size: 12px;
+    color: var(--text-dim); border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+  .tool-metric strong { color: var(--text); }
+
+  /* CHALLENGE BOX */
+  .challenge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .challenge-grid { grid-template-columns: 1fr; } }
+  .challenge-item {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-left: 3px solid;
+    border-radius: 6px; padding: 14px 16px;
+  }
+  .challenge-item.warn { border-left-color: #f59e0b; }
+  .challenge-item.info { border-left-color: var(--accent); }
+  .challenge-title { font-size: 13.5px; font-weight: 700; margin-bottom: 5px; }
+  .challenge-desc { font-size: 12.5px; color: var(--text-muted); }
+
+  /* COMPARE TABLE */
+  .compare-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13.5px; margin-top: 8px;
+  }
+  .compare-table th {
+    text-align: left; padding: 10px 14px;
+    background: var(--bg3); border: 1px solid var(--border);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--text-muted);
+  }
+  .compare-table th.fda-h { color: var(--fda-light); }
+  .compare-table th.ema-h { color: var(--ema-light); }
+  .compare-table td {
+    padding: 10px 14px; border: 1px solid var(--border);
+    vertical-align: top; color: var(--text-muted);
+  }
+  .compare-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .compare-table td:first-child { font-weight: 600; color: var(--text); }
+
+  /* STRATEGY SECTION */
+  .strategy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .strategy-grid { grid-template-columns: 1fr; } }
+  .strategy-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px;
+  }
+  .strategy-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--joint-light);
+    margin-bottom: 12px;
+  }
+  .strategy-item {
+    display: flex; gap: 10px; margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .strategy-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--joint-light); margin-top: 7px; flex-shrink: 0;
+  }
+  .strategy-text { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+  /* GLOSSARY */
+  .glossary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .glossary-grid { grid-template-columns: 1fr; } }
+  .gloss-item {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px;
+  }
+  .gloss-term {
+    font-size: 14px; font-weight: 800; color: var(--accent);
+    margin-bottom: 4px; font-family: 'Inter', monospace;
+  }
+  .gloss-def { font-size: 12.5px; color: var(--text-muted); }
+
+  /* SOURCE LINKS */
+  .source-list { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+  .source-link {
+    display: flex; gap: 12px; align-items: center;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 16px;
+    text-decoration: none; color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .source-link:hover { border-color: var(--accent); }
+  .source-icon { font-size: 16px; flex-shrink: 0; }
+  .source-title { font-size: 13px; font-weight: 600; }
+  .source-meta { font-size: 12px; color: var(--text-muted); }
+
+  /* FOOTER */
+  footer {
+    max-width: 900px; margin: 0 auto;
+    padding: 40px 32px 60px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 12px; color: var(--text-dim);
+    line-height: 1.8;
+  }
+  footer strong { color: var(--text-muted); }
+
+  /* CALLOUT */
+  .callout {
+    background: rgba(88,166,255,0.07);
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 8px; padding: 16px 20px;
+    font-size: 13.5px; margin: 20px 0;
+    color: var(--text-muted);
+  }
+  .callout strong { color: var(--accent); }
+
+  /* TAGS row */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+    padding: 4px 10px; border-radius: 20px; border: 1px solid;
+  }
+  .tag.fda { border-color: var(--fda); color: var(--fda-light); }
+  .tag.ema { border-color: var(--ema); color: var(--ema-light); }
+  .tag.joint { border-color: var(--joint); color: var(--joint-light); }
+
+  /* scroll margin for fixed nav */
+  [id] { scroll-margin-top: 68px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">TsRAP · 藥政AI準則</div>
+  <div class="nav-links">
+    <a href="#timeline">時間軸</a>
+    <a href="#framework">治理框架</a>
+    <a href="#principles">核心原則</a>
+    <a href="#tools">審查工具</a>
+    <a href="#fda-steps">FDA框架</a>
+    <a href="#compare">FDA vs EMA</a>
+    <a href="#strategy">廠商策略</a>
+    <a href="#glossary">術語速查</a>
+    <a href="#sources">原始文件</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="margin-top:52px; padding: 72px 32px 48px; max-width:900px; margin-left:auto; margin-right:auto; text-align:center;">
+  <div class="hero-eyebrow">TsRAP 2026 · RAPS 大會心得整理</div>
+  <h1 style="font-size:clamp(26px,5vw,44px);font-weight:900;line-height:1.2;letter-spacing:-0.02em;margin-bottom:18px;">
+    FDA × EMA<br><em style="font-style:normal;color:#58a6ff;">藥政 AI 應用準則</em><br>完整學習導覽
+  </h1>
+  <p style="font-size:15px;color:var(--text-muted);max-width:600px;margin:0 auto 32px;">
+    整理自 TsRAP 2026 年 4 月研討會內容，涵蓋美國 FDA、歐盟 EMA 及 FDA×EMA 聯合原則，<br>供藥政法規人員快速掌握 AI 監管現況。
+  </p>
+  <div class="tags" style="justify-content:center;">
+    <span class="tag fda">FDA Draft Guidance 2025</span>
+    <span class="tag ema">EMA Reflection Paper 2024</span>
+    <span class="tag joint">FDA×EMA 聯合原則 2026/1</span>
+  </div>
+  <div style="display:flex;justify-content:center;gap:40px;flex-wrap:wrap;padding-top:32px;border-top:1px solid var(--border);">
+    <div style="text-align:center;">
+      <span style="display:block;font-size:30px;font-weight:900;color:var(--accent);">10</span>
+      <span style="font-size:12px;color:var(--text-muted);">FDA×EMA 聯合原則</span>
+    </div>
+    <div style="text-align:center;">
+      <span style="display:block;font-size:30px;font-weight:900;color:var(--ema-light);">7</span>
+      <span style="font-size:12px;color:var(--text-muted);">EMA ALTAI 可信賴原則</span>
+    </div>
+    <div style="text-align:center;">
+      <span style="display:block;font-size:30px;font-weight:900;color:var(--fda-light);">7</span>
+      <span style="font-size:12px;color:var(--text-muted);">FDA 可信度評估步驟</span>
+    </div>
+    <div style="text-align:center;">
+      <span style="display:block;font-size:30px;font-weight:900;color:var(--joint-light);">2023–2028</span>
+      <span style="font-size:12px;color:var(--text-muted);">全球監管 AI 關鍵時程</span>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 01: TIMELINE -->
+<div id="timeline" class="section">
+  <div class="section-num">01</div>
+  <h2>全球監管 AI 關鍵時間軸</h2>
+  <p class="section-sub">Dual-track Timeline：FDA 效率導向 vs EMA 合規先行</p>
+
+  <div class="timeline">
+    <div class="tl-group">
+      <div class="tl-year" style="margin-left:0;padding-left:0;">2023</div>
+      <div class="tl-item">
+        <div class="tl-dot ema" style="margin-left:-17px;"></div>
+        <div class="tl-content">
+          <span class="tl-tag ema">EMA</span>
+          <div class="tl-title">AI 反思文件草案 · 多年期 AI 工作計畫</div>
+          <div class="tl-desc">EMA 啟動 NDSG 工作計畫，奠定全生命週期 AI 規範基礎</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-group">
+      <div class="tl-year" style="margin-left:0;padding-left:0;">2024</div>
+      <div class="tl-item">
+        <div class="tl-dot ema" style="margin-left:-17px;"></div>
+        <div class="tl-content">
+          <span class="tl-tag ema">EMA</span><span class="tl-tag" style="background:rgba(5,150,105,0.1);color:var(--ema-light);border:1px solid rgba(5,150,105,0.3);">2024/3</span>
+          <div class="tl-title">Scientific Explorer 正式上線</div>
+          <div class="tl-desc">首版限科學諮詢信函（11,000+ 份），F1 Score: 0.89–0.94</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot ema" style="margin-left:-17px;"></div>
+        <div class="tl-content">
+          <span class="tl-tag ema">EMA</span><span class="tl-tag" style="background:rgba(5,150,105,0.1);color:var(--ema-light);border:1px solid rgba(5,150,105,0.3);">2024/9</span>
+          <div class="tl-title">AI 反思文件定案 + LLM 使用指引</div>
+          <div class="tl-desc">涵蓋藥品全生命週期；EU AI Act 生效（高風險分類）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-group">
+      <div class="tl-year" style="margin-left:0;padding-left:0;">2025</div>
+      <div class="tl-item">
+        <div class="tl-dot fda" style="margin-left:-17px;"></div>
+        <div class="tl-content">
+          <span class="tl-tag fda">FDA</span><span class="tl-tag" style="background:rgba(37,99,235,0.1);color:var(--fda-light);border:1px solid rgba(37,99,235,0.3);">2025/1</span>
+          <div class="tl-title">FDA Draft Guidance 發布（AI 支援監管決策）</div>
+          <div class="tl-desc">7 步驟可信度評估框架；預期 Q2 2026 發布正式版</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot fda" style="margin-left:-17px;"></div>
+        <div class="tl-content">
+          <span class="tl-tag fda">FDA</span><span class="tl-tag" style="background:rgba(37,99,235,0.1);color:var(--fda-light);border:1px solid rgba(37,99,235,0.3);">2025/5</span>
+          <div class="tl-title">AI 輔助審查試驗完成 → ELSA 擴大上線（6月）</div>
+          <div class="tl-desc">技術架構：RAG + Gemini（原 Claude，因國安政策轉移）</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot fda" style="margin-left:-17px;"></div>
+        <div class="tl-content">
+          <span class="tl-tag fda">FDA</span><span class="tl-tag" style="background:rgba(37,99,235,0.1);color:var(--fda-light);border:1px solid rgba(37,99,235,0.3);">2025/12</span>
+          <div class="tl-title">Agentic AI 計畫宣布</div>
+          <div class="tl-desc">多步驟自主審查工作流程；不良反應監測自動化</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot ema" style="margin-left:-17px;"></div>
+        <div class="tl-content">
+          <span class="tl-tag ema">EMA</span>
+          <div class="tl-title">NDSG v1.0 工作計畫</div>
+          <div class="tl-desc">AI 工作流四大維度：指引政策、工具技術、協作變革、試驗</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-group">
+      <div class="tl-year" style="margin-left:0;padding-left:0;">2026（現在）</div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--joint-light);margin-left:-17px;border:2px solid var(--bg);"></div>
+        <div class="tl-content">
+          <span class="tl-tag joint">聯合</span><span class="tl-tag" style="background:rgba(217,119,6,0.1);color:var(--joint-light);border:1px solid rgba(217,119,6,0.3);">2026/1</span>
+          <div class="tl-title">FDA × EMA 聯合十原則（Good AI Practice）</div>
+          <div class="tl-desc">非約束性；適用藥品全生命週期（不含醫療器材）</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot ema" style="margin-left:-17px;"></div>
+        <div class="tl-content">
+          <span class="tl-tag ema">EMA</span><span class="tl-tag" style="background:rgba(5,150,105,0.1);color:var(--ema-light);border:1px solid rgba(5,150,105,0.3);">2026/3</span>
+          <div class="tl-title">Scientific Explorer 擴展至 MAA；NDSG v2.0</div>
+          <div class="tl-desc">三大維度（試驗整合入工具與創新）；SPC Reader 上線</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 02: FRAMEWORK -->
+<div id="framework" class="section">
+  <div class="section-num">02</div>
+  <h2>三層治理文件框架</h2>
+  <p class="section-sub">廠商用 AI vs 主管機關內部 AI，規範來源各不相同</p>
+
+  <div class="dual-card">
+    <div class="card fda-card">
+      <div class="card-label">廠商用 AI（開發藥品）</div>
+      <h3>明確涵蓋</h3>
+      <p>FDA×EMA 聯合原則、EMA 反思文件（2024/9）、FDA Draft Guidance（2025/1）三份文件已明確為廠商提交 AI 相關資料建立規範。</p>
+    </div>
+    <div class="card ema-card">
+      <div class="card-label">EMA 內部 AI 工具</div>
+      <h3>分散多框架</h3>
+      <p>EU AI Act（高風險義務）+ GDPR + LLM 使用指引 + NDSG 工作計畫，無單一對應文件。Scientific Explorer 受 EU AI Act 高風險分類約束。</p>
+    </div>
+    <div class="card" style="background:var(--bg2);border:1px solid var(--border);">
+      <div class="card-label" style="color:var(--fda-light);">FDA 內部 AI（ELSA）</div>
+      <h3>無專門 AI 治理文件</h3>
+      <p>受《行政程序法》（APA）及 FDA 內部政策規範；AI 生成的行政紀錄可能成為 FOIA 請求目標及法律挑戰依據——廠商法務需特別關注。</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>關鍵差異：</strong>FDA 以<strong style="color:var(--fda-light);">效率</strong>為驅動力，填補 4,300 人裁員缺口；EMA 以<strong style="color:var(--ema-light);">合規與法律義務</strong>為驅動力，EU AI Act 將 AI 素養列為法定義務。<br>
+    兩者共同底線：<strong>「人類做最終決定，AI 為輔助工具」</strong>。
+  </div>
+</div>
+
+<!-- SECTION 03: PRINCIPLES -->
+<div id="principles" class="section">
+  <div class="section-num">03</div>
+  <h2>核心原則：三套標準一次看懂</h2>
+  <p class="section-sub">廠商需同時掌握聯合原則（10條）、EMA ALTAI（7條）</p>
+
+  <h3 style="font-size:14px;font-weight:700;color:var(--joint-light);margin-bottom:14px;letter-spacing:0.05em;text-transform:uppercase;">FDA × EMA 聯合十原則（2026/1）</h3>
+  <div class="principle-list" style="margin-bottom:32px;">
+    <div class="principle-item"><div class="principle-num" style="background:rgba(217,119,6,0.2);color:var(--joint-light);">1</div><div class="principle-text"><div class="principle-title">以人為核心設計（Human-centric by design）</div><div class="principle-desc">AI 開發與使用須符合倫理與以人為本的價值觀</div></div></div>
+    <div class="principle-item"><div class="principle-num" style="background:rgba(217,119,6,0.2);color:var(--joint-light);">2</div><div class="principle-text"><div class="principle-title">風險導向方法（Risk-based approach）</div><div class="principle-desc">依使用情境與模型風險，進行比例相稱的驗證、風險緩解與監督</div></div></div>
+    <div class="principle-item"><div class="principle-num" style="background:rgba(217,119,6,0.2);color:var(--joint-light);">3</div><div class="principle-text"><div class="principle-title">遵循標準（Adherence to standards）</div><div class="principle-desc">遵守相關法律、倫理、技術、科學、資安及法規標準，包括 GxP</div></div></div>
+    <div class="principle-item"><div class="principle-num" style="background:rgba(217,119,6,0.2);color:var(--joint-light);">4</div><div class="principle-text"><div class="principle-title">明確使用情境（Clear context of use）</div><div class="principle-desc">AI 技術須有明確定義的使用情境（角色與範疇）</div></div></div>
+    <div class="principle-item"><div class="principle-num" style="background:rgba(217,119,6,0.2);color:var(--joint-light);">5</div><div class="principle-text"><div class="principle-title">跨領域專業整合（Multidisciplinary expertise）</div><div class="principle-desc">整合 AI 技術與應用領域的跨領域專業，貫穿整個生命週期</div></div></div>
+    <div class="principle-item"><div class="principle-num" style="background:rgba(217,119,6,0.2);color:var(--joint-light);">6</div><div class="principle-text"><div class="principle-title">資料治理與文件（Data governance and documentation）</div><div class="principle-desc">資料來源、處理步驟、分析決策須可追溯，符合 GxP；敏感資料全程受保護</div></div></div>
+    <div class="principle-item"><div class="principle-num" style="background:rgba(217,119,6,0.2);color:var(--joint-light);">7</div><div class="principle-text"><div class="principle-title">模型設計與開發實踐（Model design and development practices）</div><div class="principle-desc">遵循最佳工程實踐，確保透明度、可靠性、可泛化性與穩健性</div></div></div>
+    <div class="principle-item"><div class="principle-num" style="background:rgba(217,119,6,0.2);color:var(--joint-light);">8</div><div class="principle-text"><div class="principle-title">風險導向效能評估（Risk-based performance assessment）</div><div class="principle-desc">評估含人機互動的完整系統，使用符合使用情境的資料與指標</div></div></div>
+    <div class="principle-item"><div class="principle-num" style="background:rgba(217,119,6,0.2);color:var(--joint-light);">9</div><div class="principle-text"><div class="principle-title">生命週期管理（Life cycle management）</div><div class="principle-desc">實施風險導向品質管理系統，包含定期重新評估，以處理資料漂移等問題</div></div></div>
+    <div class="principle-item"><div class="principle-num" style="background:rgba(217,119,6,0.2);color:var(--joint-light);">10</div><div class="principle-text"><div class="principle-title">清晰必要資訊（Clear, essential information）</div><div class="principle-desc">以平易語言向預期使用者（含患者）說明使用情境、效能、限制、資料與可解釋性</div></div></div>
+  </div>
+
+  <h3 style="font-size:14px;font-weight:700;color:var(--ema-light);margin-bottom:14px;letter-spacing:0.05em;text-transform:uppercase;">EMA ALTAI 可信賴 AI 七原則（反思文件 2024/9）</h3>
+  <div class="principle-list">
+    <div class="principle-item"><div class="principle-num ema-num">1</div><div class="principle-text"><div class="principle-title">人類主導與監督（Human agency and oversight）</div><div class="principle-desc">AI 不取代人類決策；使用者與病人回報成果（PRO/PEX）應納入評估</div></div></div>
+    <div class="principle-item"><div class="principle-num ema-num">2</div><div class="principle-text"><div class="principle-title">技術穩健性與安全（Technical robustness and safety）</div><div class="principle-desc">系統需具備防錯能力；高患者風險場景必須以新資料前瞻性驗證</div></div></div>
+    <div class="principle-item"><div class="principle-num ema-num">3</div><div class="principle-text"><div class="principle-title">隱私與資料治理（Privacy and data governance）</div><div class="principle-desc">個人資料處理符合 GDPR；GxP 資料治理原則延伸涵蓋 AI/ML</div></div></div>
+    <div class="principle-item"><div class="principle-num ema-num">4</div><div class="principle-text"><div class="principle-title">透明度（Transparency）</div><div class="principle-desc">模型架構、訓練資料、效能限制充分揭露；優先選用可解釋（interpretable）模型</div></div></div>
+    <div class="principle-item"><div class="principle-num ema-num">5</div><div class="principle-text"><div class="principle-title">責任（Accountability）</div><div class="principle-desc">申請人／MAH 對所有演算法、模型、資料之法規合規性負完全責任</div></div></div>
+    <div class="principle-item"><div class="principle-num ema-num">6</div><div class="principle-text"><div class="principle-title">社會與環境福祉（Societal and environmental well-being）</div><div class="principle-desc">AI 開發應考量對社會的廣泛影響</div></div></div>
+    <div class="principle-item"><div class="principle-num ema-num">7</div><div class="principle-text"><div class="principle-title">多元、不歧視與公平（Diversity, non-discrimination, and fairness）</div><div class="principle-desc">訓練資料需考量少數族群代表性；防止歧視性或不公平輸出</div></div></div>
+  </div>
+</div>
+
+<!-- SECTION 04: TOOLS -->
+<div id="tools" class="section">
+  <div class="section-num">04</div>
+  <h2>主管機關 AI 工具：ELSA vs Scientific Explorer</h2>
+  <p class="section-sub">兩者定位不同：FDA 強調效率自動化；EMA 強調搜索先例</p>
+
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">ELSA <span>Electronic Submissions AI</span></div>
+      <span class="tool-badge badge-fda">FDA 內部</span>
+      <div class="tool-desc">
+        2025/6 擴大上線。審查員旁邊的 AI 助手——自動摘要申請文件、比對標籤、標記資料缺口（Data Gap），並輔助稽查規劃（識別高風險設施）。<br><br>
+        技術架構：RAG + Gemini（2025 年因國安政策從 Claude 遷移）。部署於 GovCloud，不對廠商資料進行訓練。
+      </div>
+      <div class="tool-metric">
+        <strong>關鍵警示：</strong>審查員將以 ELSA 預處理輸出為基礎判斷。若文件結構不清晰，AI 可能直接標記為「缺口」→ 引發補件。
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Scientific Explorer <span>尋找先例的 AI 引擎</span></div>
+      <span class="tool-badge badge-ema">EMA 內部</span>
+      <div class="tool-desc">
+        2024/3 上線。核心功能：在 11,000+ 份科學諮詢信函中搜索先例，協助審查員快速定位類似案件。2026/3 擴展至 MAA（上市許可申請）比對。<br><br>
+        技術：EMA 私有版 OpenAI + 標準化資訊提取。設計上<strong style="color:var(--text);">不生成新文字</strong>——既是安全設計，也是功能限制。
+      </div>
+      <div class="tool-metric">
+        <strong>效率數據：</strong>F1 Score 0.89–0.94（資訊提取精準度）。仍有約 6% 以上提取誤差，人工驗證為必要步驟。廠商無法直接存取。
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px;">ELSA 六大應用領域</h3>
+    <div class="challenge-grid">
+      <div class="challenge-item info"><div class="challenge-title">不良事件監測</div><div class="challenge-desc">自動摘要不良事件報告、案例分診與優先排序、個案安全報告處理</div></div>
+      <div class="challenge-item info"><div class="challenge-title">審查流程加速</div><div class="challenge-desc">加速臨床試驗協議審查、快速比對新舊版產品標籤</div></div>
+      <div class="challenge-item info"><div class="challenge-title">文獻審查（藥物警戒）</div><div class="challenge-desc">掃描已發表期刊識別不良事件訊號——用於上市後安全監控信號偵測</div></div>
+      <div class="challenge-item info"><div class="challenge-title">文獻審查（查驗登記）</div><div class="challenge-desc">綜合 NDA/BLA 申請案中的科學文獻，協助審查員快速分析複雜數據</div></div>
+      <div class="challenge-item info"><div class="challenge-title">稽查規劃</div><div class="challenge-desc">識別高風險設施，排定查廠優先順序</div></div>
+      <div class="challenge-item info"><div class="challenge-title">資料處理</div><div class="challenge-desc">產生程式碼以建立非臨床應用資料庫</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 05: FDA 7 STEPS -->
+<div id="fda-steps" class="section">
+  <div class="section-num">05</div>
+  <h2>FDA 7 步驟可信度評估框架</h2>
+  <p class="section-sub">廠商提交 AI 相關資料時須遵循的風險導向框架（Draft Guidance 2025/1）</p>
+
+  <div class="callout">
+    <strong>模型風險矩陣核心公式：</strong>模型風險 = <strong>模型影響力（Model Influence）</strong> × <strong>決策後果（Decision Consequence）</strong>。這是「適度治理（Right-sized Governance）」的核心——幫助廠商擺脫對所有 AI 專案一刀切的治理模式。
+  </div>
+
+  <div class="steps">
+    <div class="step-item">
+      <div class="step-icon">1</div>
+      <div class="step-content">
+        <div class="step-title">定義問題（Define the question of interest）</div>
+        <div class="step-desc">明確說明 AI 模型要回答的具體問題、決策或疑慮。</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-icon">2</div>
+      <div class="step-content">
+        <div class="step-title">定義使用情境（Define the context of use, COU）</div>
+        <div class="step-desc">詳述 AI 模型的角色（做什麼）與範疇（用到什麼程度），以及是否有其他輔助證據並用。</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-icon">3</div>
+      <div class="step-content">
+        <div class="step-title">評估模型風險（Assess the AI model risk）</div>
+        <div class="step-desc">模型風險 = 模型影響力 × 決策後果。高影響力 + 高風險後果 → 需最嚴格驗證。</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-icon">4</div>
+      <div class="step-content">
+        <div class="step-title">制定可信度評估計畫（Develop a credibility plan）</div>
+        <div class="step-desc">描述模型與開發過程；描述模型評估過程。包含訓練資料、驗證方法、效能指標。</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-icon">5</div>
+      <div class="step-content">
+        <div class="step-title">執行計畫（Execute the plan）</div>
+        <div class="step-desc">依照 Step 4 制定的計畫確實執行；<strong style="color:var(--fda-light);">建議執行前先與 FDA 討論</strong>，設定期望並預先識別挑戰。</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-icon">6</div>
+      <div class="step-content">
+        <div class="step-title">記錄結果（Document the results）</div>
+        <div class="step-desc">Steps 1–4 的結果說明；任何偏離原計畫的情形及理由。需完整文件化。</div>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-icon">7</div>
+      <div class="step-content">
+        <div class="step-title">判定模型是否適用（Determine adequacy for COU）</div>
+        <div class="step-desc">根據模型可信度採取措施——採用、修改或拒絕 AI 輸出用於監管決策。</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:28px;">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px;">FDA Draft Guidance：AI 在藥品生命週期的六大應用</h3>
+    <div class="challenge-grid">
+      <div class="challenge-item warn"><div class="challenge-title">減少動物試驗</div><div class="challenge-desc">以 AI 取代或減少藥動學、藥效學、毒理學的動物試驗</div></div>
+      <div class="challenge-item warn"><div class="challenge-title">預測建模</div><div class="challenge-desc">臨床藥動學、暴露-反應分析的預測模型（PK/PD）</div></div>
+      <div class="challenge-item warn"><div class="challenge-title">整合多元資料</div><div class="challenge-desc">整合自然病史、臨床試驗、基因資料庫、社群媒體、登錄系統</div></div>
+      <div class="challenge-item warn"><div class="challenge-title">大數據分析</div><div class="challenge-desc">處理真實世界資料（RWD）或數位健康科技（DHT）資料</div></div>
+      <div class="challenge-item warn"><div class="challenge-title">藥物警戒</div><div class="challenge-desc">識別、評估、回報上市後不良事件（ADR）</div></div>
+      <div class="challenge-item warn"><div class="challenge-title">製造條件選擇</div><div class="challenge-desc">AI 輔助選擇最佳製造條件</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 06: COMPARE -->
+<div id="compare" class="section">
+  <div class="section-num">06</div>
+  <h2>FDA vs EMA：策略對比</h2>
+  <p class="section-sub">兩種策略，一個方向——「人類做最終決定，AI 為輔助工具」</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>比較項目</th>
+        <th class="fda-h">FDA（效率導向）</th>
+        <th class="ema-h">EMA（合規與先例導向）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>核心驅動力</td>
+        <td>填補 4,300 人裁員缺口；加速審查</td>
+        <td>EU AI Act 合規義務；網絡協作效率</td>
+      </tr>
+      <tr>
+        <td>主要 AI 工具</td>
+        <td>ELSA（預處理→審查輔助）→ Agentic AI</td>
+        <td>Scientific Explorer（搜索先例）+ Health Data Lab</td>
+      </tr>
+      <tr>
+        <td>技術架構</td>
+        <td>RAG + Gemini（GovCloud）</td>
+        <td>私有版 OpenAI + 標準化資訊提取</td>
+      </tr>
+      <tr>
+        <td>廠商可存取</td>
+        <td>否（內部使用）</td>
+        <td>否（含商業機密）</td>
+      </tr>
+      <tr>
+        <td>AI 是否生成新文字</td>
+        <td>是（摘要、標記）</td>
+        <td>否（設計原則禁止）</td>
+      </tr>
+      <tr>
+        <td>廠商適用指引</td>
+        <td>Draft Guidance 2025/1（7步驟框架）</td>
+        <td>Reflection Paper 2024/9（ALTAI 7原則）</td>
+      </tr>
+      <tr>
+        <td>法律框架</td>
+        <td>APA（行政程序法）+ 內部政策</td>
+        <td>EU AI Act + GDPR + EUDPR</td>
+      </tr>
+      <tr>
+        <td>藥物警戒 AI 指引</td>
+        <td>尚無等效專項指引</td>
+        <td>預計 2026–2028 起草（EMA 先行）</td>
+      </tr>
+      <tr>
+        <td>Human-in-the-loop</td>
+        <td>所有 AI 輸出納入正式行動前須人工審閱</td>
+        <td>人類主導與監督為第一 ALTAI 原則</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:24px;">
+    <h3 style="font-size:14px;font-weight:700;margin-bottom:14px;">廠商尚未獲得解答的疑慮</h3>
+    <div class="challenge-grid">
+      <div class="challenge-item warn"><div class="challenge-title">商業機密（CBI）保護</div><div class="challenge-desc">AI 系統是否可能將甲廠商的機密申請資料，納入對乙廠商審查的知識庫？</div></div>
+      <div class="challenge-item warn"><div class="challenge-title">FOIA 風險</div><div class="challenge-desc">AI 生成的審查摘要屬於行政紀錄，若經由資訊自由法請求公開，廠商是否有機會申請遮蔽？</div></div>
+      <div class="challenge-item warn"><div class="challenge-title">模型版本一致性</div><div class="challenge-desc">Claude 版與 Gemini 版輸出特性不同；同一申請案跨越切換時間點，產生一致性問題</div></div>
+      <div class="challenge-item warn"><div class="challenge-title">是否告知廠商</div><div class="challenge-desc">AI 介入審查決定時，廠商是否會被通知？目前不透明，可能成為未來訴訟依據</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 07: STRATEGY -->
+<div id="strategy" class="section">
+  <div class="section-num">07</div>
+  <h2>廠商因應策略</h2>
+  <p class="section-sub">短期行動 + 中長期策略，因應 AI 審查新常態</p>
+
+  <div class="strategy-grid">
+    <div class="strategy-card">
+      <div class="strategy-label">短期行動（立即可做）</div>
+      <div class="strategy-item"><div class="strategy-dot"></div><div class="strategy-text"><strong style="color:var(--text);">主動詢問 FDA：</strong>書面確認資料存放在 AWS 還是 Google Cloud；確認 Gemini 版是否已啟用 ZDR（零資料保留）</div></div>
+      <div class="strategy-item"><div class="strategy-dot"></div><div class="strategy-text"><strong style="color:var(--text);">確認使用的模型版本：</strong>要求 FDA 揭露審查時使用的模型（Claude 或 Gemini）及版本</div></div>
+      <div class="strategy-item"><div class="strategy-dot"></div><div class="strategy-text"><strong style="color:var(--text);">保留完整往來日誌：</strong>所有與 FDA 互動需有時間戳記、引用文件版本、回應內容，尤其是過渡期間</div></div>
+      <div class="strategy-item"><div class="strategy-dot"></div><div class="strategy-text"><strong style="color:var(--text);">監控審查一致性：</strong>注意不同時間點審查結果是否出現矛盾，發現即以書面要求 FDA 說明</div></div>
+    </div>
+    <div class="strategy-card">
+      <div class="strategy-label">中長期策略</div>
+      <div class="strategy-item"><div class="strategy-dot"></div><div class="strategy-text"><strong style="color:var(--text);">提升文件結構品質：</strong>結構清晰、機器可讀的文件讓 ELSA 更容易正確解讀，減少誤標記與補件要求</div></div>
+      <div class="strategy-item"><div class="strategy-dot"></div><div class="strategy-text"><strong style="color:var(--text);">提早進行諮詢：</strong>在 AI 形成錯誤期望前先與人類審查員對齊，書面共識對後續審查有約束力</div></div>
+      <div class="strategy-item"><div class="strategy-dot"></div><div class="strategy-text"><strong style="color:var(--text);">法規與法務協作：</strong>AI 生成的行政紀錄可能成為法律挑戰依據，法務需了解 ELSA 生成內容的法律性質</div></div>
+      <div class="strategy-item"><div class="strategy-dot"></div><div class="strategy-text"><strong style="color:var(--text);">內部培養 AI 素養：</strong>團隊需能辨識「FDA 的文字是 AI 生成還是人工撰寫」，以便識別可反駁的 AI 錯誤</div></div>
+      <div class="strategy-item"><div class="strategy-dot"></div><div class="strategy-text"><strong style="color:var(--text);">用 AI 應對 AI 審查：</strong>95% 製藥組織正在使用或規劃 GenAI；提交前用 AI 預審文件缺口將成標配</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 08: GLOSSARY -->
+<div id="glossary" class="section">
+  <div class="section-num">08</div>
+  <h2>術語速查表</h2>
+  <p class="section-sub">讀任何 AI 法規文件前，先掌握這些核心詞彙</p>
+
+  <div class="glossary-grid">
+    <div class="gloss-item"><div class="gloss-term">ELSA</div><div class="gloss-def">Electronic Submissions AI；FDA 內部審查輔助工具，2025/6 擴大上線</div></div>
+    <div class="gloss-item"><div class="gloss-term">Scientific Explorer</div><div class="gloss-def">EMA 內部先例搜索工具；比對 11,000+ 份科學諮詢信函</div></div>
+    <div class="gloss-item"><div class="gloss-term">COU</div><div class="gloss-def">Context of Use（使用情境）；FDA Draft Guidance 核心概念，必須在申請文件中明確定義</div></div>
+    <div class="gloss-item"><div class="gloss-term">ALTAI</div><div class="gloss-def">Assessment List for Trustworthy AI；EMA 反思文件採用的「可信賴 AI」評估清單，共 7 原則</div></div>
+    <div class="gloss-item"><div class="gloss-term">Data Drift</div><div class="gloss-def">資料漂移；模型在新環境或新資料下表現衰退的現象，FDA 四大挑戰之一</div></div>
+    <div class="gloss-item"><div class="gloss-term">NDSG</div><div class="gloss-def">Network Data Steering Group；EMA 主導 AI 政策的核心機構，2025–2028 工作計畫</div></div>
+    <div class="gloss-item"><div class="gloss-term">RAG</div><div class="gloss-def">Retrieval-Augmented Generation；ELSA 使用的技術架構，結合文件檢索與語言生成</div></div>
+    <div class="gloss-item"><div class="gloss-term">ZDR</div><div class="gloss-def">Zero Data Retention；Gemini API 的資料不保留模式，廠商應確認 ELSA 是否已啟用</div></div>
+    <div class="gloss-item"><div class="gloss-term">MAA</div><div class="gloss-def">Marketing Authorisation Application；EMA 的上市許可申請，2026/3 起 Scientific Explorer 可比對</div></div>
+    <div class="gloss-item"><div class="gloss-term">GovCloud</div><div class="gloss-def">美國政府專用雲端環境；ELSA 部署於此，不對廠商提交資料進行訓練</div></div>
+    <div class="gloss-item"><div class="gloss-term">Human-in-the-loop</div><div class="gloss-def">人類參與決策迴圈；FDA 與 EMA 共同底線——AI 輸出在納入正式行動前必須經過人工審閱</div></div>
+    <div class="gloss-item"><div class="gloss-term">Agentic AI</div><div class="gloss-def">可自主執行多步驟任務的 AI；FDA 2025/12 宣布計畫，用於不良反應監測等</div></div>
+  </div>
+</div>
+
+<!-- SECTION 09: SOURCES -->
+<div id="sources" class="section">
+  <div class="section-num">09</div>
+  <h2>原始文件與來源</h2>
+  <p class="section-sub">所有資訊出處，可直接點擊前往官方文件</p>
+
+  <div class="source-list">
+    <a href="https://www.ema.europa.eu/en/news/ema-fda-set-common-principles-ai-medicine-development-0" target="_blank" class="source-link">
+      <div class="source-icon">🤝</div>
+      <div><div class="source-title">FDA × EMA Guiding Principles of Good AI Practice in Drug Development</div><div class="source-meta">ema.europa.eu · 2026 年 1 月 · 聯合原則（10 條）</div></div>
+    </a>
+    <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/considerations-use-artificial-intelligence-support-regulatory-decision-making-drug-and-biological" target="_blank" class="source-link">
+      <div class="source-icon">🇺🇸</div>
+      <div><div class="source-title">FDA Draft Guidance: Considerations for the Use of AI to Support Regulatory Decision-Making</div><div class="source-meta">fda.gov · 2025 年 1 月 6 日 · 7 步驟可信度評估框架</div></div>
+    </a>
+    <a href="https://www.ema.europa.eu/node/244999#ai-in-medicinal-product-lifecycle-reflection-paper-68368" target="_blank" class="source-link">
+      <div class="source-icon">🇪🇺</div>
+      <div><div class="source-title">EMA Reflection Paper on the Use of AI in the Medicinal Product Lifecycle</div><div class="source-meta">ema.europa.eu · 2024 年 9 月 · ALTAI 7 原則</div></div>
+    </a>
+    <a href="https://www.ema.europa.eu/en/documents/other/network-data-steering-group-workplan-2025-2028_en.pdf" target="_blank" class="source-link">
+      <div class="source-icon">📋</div>
+      <div><div class="source-title">EMA NDSG Workplan 2025–2028: Data and AI in Medicines Regulations</div><div class="source-meta">ema.europa.eu · NDSG 四大維度工作計畫</div></div>
+    </a>
+    <a href="https://www.ema.europa.eu/en/documents/other/scientific-explorer-frequently-asked-questions_en.pdf" target="_blank" class="source-link">
+      <div class="source-icon">🔍</div>
+      <div><div class="source-title">EMA Scientific Explorer FAQ</div><div class="source-meta">ema.europa.eu · F1 Score 0.89–0.94 · 使用範圍與限制</div></div>
+    </a>
+    <a href="https://www.ema.europa.eu/en/documents/other/guiding-principles-use-large-language-models-regulatory-science-medicines-regulatory-activities_en.pdf" target="_blank" class="source-link">
+      <div class="source-icon">🤖</div>
+      <div><div class="source-title">EMA Guiding Principles for Use of LLMs in Regulatory Science</div><div class="source-meta">ema.europa.eu · EMA 內部 LLM 使用指引原則</div></div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <strong>TsRAP 台灣藥品法規學會</strong><br>
+  本頁整理自 2026 年 4 月 24 日「掌握美歐藥政 AI 應用準則、共創台灣醫藥審查願景」研討會<br>
+  主講：蔡懿玲副秘書長<br><br>
+  內容為教育性整理，力求忠實於原始文件；細節仍以各機關官方文件為準。<br>
+  製作日期：2026 年 6 月
+</footer>
+
+</body>
+</html>
