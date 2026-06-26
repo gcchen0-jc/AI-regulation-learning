@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全球藥政 AI 發展重點 2024–2026</title>
+<style>
+  /* ── 字型 ── */
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  /* ── 設計 Token ── */
+  :root {
+    --c-bg:       #f8f7f4;
+    --c-surface:  #ffffff;
+    --c-border:   #e2e0da;
+    --c-text:     #1a1916;
+    --c-muted:    #6b6963;
+    --c-faint:    #9c9991;
+
+    /* 各機構主色 */
+    --fda:    #1a4b8c;
+    --ema:    #0f6e56;
+    --pmda:   #6b4a9b;
+    --nmpa:   #b03020;
+    --mhra:   #2e5fa3;
+    --hc:     #b35f00;
+
+    --fda-lt: #e8eef8;
+    --ema-lt: #e1f5ee;
+    --pmda-lt:#f0eaf8;
+    --nmpa-lt:#faece7;
+    --mhra-lt:#e6eef8;
+    --hc-lt:  #fdf0dd;
+
+    --radius: 10px;
+    --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', 'Inter', system-ui, sans-serif;
+    background: var(--c-bg);
+    color: var(--c-text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── 頁首 ── */
+  .page-hero {
+    background: var(--c-text);
+    color: #fff;
+    padding: 56px 24px 48px;
+    text-align: center;
+  }
+  .page-hero .eyebrow {
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 16px;
+  }
+  .page-hero h1 {
+    font-size: clamp(24px, 5vw, 40px);
+    font-weight: 700;
+    letter-spacing: -.01em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .page-hero h1 span { color: #7ec8a4; }
+  .page-hero .subtitle {
+    font-size: 15px;
+    color: #ccc;
+    max-width: 560px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+  }
+  .meta-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .meta-badge {
+    font-size: 12px;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 20px;
+    padding: 5px 14px;
+    color: #ddd;
+  }
+
+  /* ── 導航 ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(248,247,244,.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--c-border);
+    padding: 0 24px;
+    overflow-x: auto;
+  }
+  .nav-inner {
+    display: flex;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    white-space: nowrap;
+  }
+  .nav-inner a {
+    display: inline-block;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--c-muted);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color .2s, border-color .2s;
+  }
+  .nav-inner a:hover { color: var(--c-text); border-bottom-color: var(--c-text); }
+
+  /* ── 主體 ── */
+  .main { max-width: 900px; margin: 0 auto; padding: 40px 24px 80px; }
+
+  /* ── 區塊標題 ── */
+  .section { margin-bottom: 56px; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--c-border);
+  }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--c-faint);
+    font-weight: 500;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -.01em;
+  }
+
+  /* ── 速覽卡片列 ── */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .overview-card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    border-left: 4px solid;
+    box-shadow: var(--shadow);
+  }
+  .overview-card .flag-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .overview-card .flag { font-size: 20px; }
+  .overview-card .agency { font-size: 13px; font-weight: 600; }
+  .overview-card .agency-sub { font-size: 11px; color: var(--c-faint); }
+  .overview-card .tagline {
+    font-size: 13px;
+    color: var(--c-muted);
+    line-height: 1.5;
+  }
+  .overview-card .tagline strong { color: var(--c-text); }
+
+  /* ── 詳細國家卡片 ── */
+  .country-block {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+  }
+  .country-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px 18px;
+    border-bottom: 1px solid var(--c-border);
+  }
+  .country-flag { font-size: 28px; line-height: 1; }
+  .country-info { flex: 1; }
+  .country-name { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+  .country-agency { font-size: 12px; color: var(--c-faint); }
+  .key-doc-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .country-body { padding: 20px 24px; }
+  .pillars-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 16px;
+  }
+  .pillar-tag {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1px solid;
+  }
+  .country-summary { font-size: 14px; color: var(--c-muted); line-height: 1.75; }
+  .country-summary strong { color: var(--c-text); font-weight: 600; }
+  .country-summary em { font-style: normal; color: var(--c-text); }
+
+  /* 各國色彩 */
+  .fda  .country-header { border-left: 4px solid var(--fda); }
+  .ema  .country-header { border-left: 4px solid var(--ema); }
+  .pmda .country-header { border-left: 4px solid var(--pmda); }
+  .nmpa .country-header { border-left: 4px solid var(--nmpa); }
+  .mhra .country-header { border-left: 4px solid var(--mhra); }
+  .hc   .country-header { border-left: 4px solid var(--hc); }
+
+  .fda  .key-doc-badge { background: var(--fda-lt); color: var(--fda); }
+  .ema  .key-doc-badge { background: var(--ema-lt); color: var(--ema); }
+  .pmda .key-doc-badge { background: var(--pmda-lt); color: var(--pmda); }
+  .nmpa .key-doc-badge { background: var(--nmpa-lt); color: var(--nmpa); }
+  .mhra .key-doc-badge { background: var(--mhra-lt); color: var(--mhra); }
+  .hc   .key-doc-badge { background: var(--hc-lt); color: var(--hc); }
+
+  .fda  .overview-card { border-left-color: var(--fda); }
+  .ema  .overview-card { border-left-color: var(--ema); }
+  .pmda .overview-card { border-left-color: var(--pmda); }
+  .nmpa .overview-card { border-left-color: var(--nmpa); }
+  .mhra .overview-card { border-left-color: var(--mhra); }
+  .hc   .overview-card { border-left-color: var(--hc); }
+
+  /* ── 比較表格 ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--c-surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--c-border);
+  }
+  .compare-table th {
+    background: var(--c-text);
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .04em;
+    white-space: nowrap;
+  }
+  .compare-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--c-border);
+    vertical-align: top;
+    color: var(--c-muted);
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: #faf9f7; }
+  .compare-table .country-cell {
+    font-weight: 700;
+    color: var(--c-text);
+    white-space: nowrap;
+  }
+  .compare-table .tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin: 2px 2px 2px 0;
+  }
+  .tag-internal  { background: #e8eef8; color: #1a4b8c; }
+  .tag-guidance  { background: #e1f5ee; color: #0f6e56; }
+  .tag-strategy  { background: #f0eaf8; color: #6b4a9b; }
+  .tag-deregul   { background: #fdf0dd; color: #b35f00; }
+  .tag-device    { background: #faece7; color: #b03020; }
+  .tag-data      { background: #e1f5ee; color: #0f6e56; }
+
+  /* ── 洞察卡片 ── */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .insight-card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+  }
+  .insight-card .ic-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--c-border);
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+  .insight-card .ic-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--c-text);
+  }
+  .insight-card .ic-body {
+    font-size: 13px;
+    color: var(--c-muted);
+    line-height: 1.65;
+  }
+
+  /* ── 參考資料 ── */
+  .sources-list { list-style: none; }
+  .sources-list li {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--c-border);
+    font-size: 13px;
+  }
+  .sources-list li:last-child { border-bottom: none; }
+  .src-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--c-faint);
+    min-width: 22px;
+    margin-top: 2px;
+  }
+  .src-body { flex: 1; }
+  .src-title { font-weight: 600; color: var(--c-text); display: block; margin-bottom: 2px; }
+  .src-meta { color: var(--c-faint); font-size: 12px; }
+  .src-body a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--c-border);
+  }
+  .src-body a:hover { color: var(--c-text); }
+
+  /* ── 頁尾 ── */
+  footer {
+    background: var(--c-text);
+    color: #aaa;
+    font-size: 12px;
+    text-align: center;
+    padding: 28px 24px;
+    line-height: 1.8;
+  }
+  footer a { color: #7ec8a4; text-decoration: none; }
+
+  /* ── 手機響應 ── */
+  @media (max-width: 600px) {
+    .page-hero { padding: 40px 20px 36px; }
+    .main { padding: 28px 16px 60px; }
+    .country-header { flex-wrap: wrap; }
+    .key-doc-badge { font-size: 10px; }
+    .compare-table { font-size: 12px; }
+    .compare-table th, .compare-table td { padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════ 頁首 ════════════ -->
+<header class="page-hero">
+  <p class="eyebrow">2026年6月整理</p>
+  <h1>全球藥政 <span>AI 監管</span><br>發展重點 2024–2026</h1>
+  <p class="subtitle">系統整理 FDA、EMA、PMDA、NMPA、MHRA、Health Canada 六大監管機構的 AI 策略方向、核心文件與實施舉措，協助藥政從業人員掌握國際監管趨勢。</p>
+  <div class="meta-row">
+    <span class="meta-badge">🇺🇸 FDA</span>
+    <span class="meta-badge">🇪🇺 EMA / HMA</span>
+    <span class="meta-badge">🇯🇵 PMDA</span>
+    <span class="meta-badge">🇨🇳 NMPA</span>
+    <span class="meta-badge">🇬🇧 MHRA</span>
+    <span class="meta-badge">🇨🇦 Health Canada</span>
+  </div>
+</header>
+
+<!-- ════════════ 導航 ════════════ -->
+<nav class="sticky-nav" aria-label="頁面導航">
+  <div class="nav-inner">
+    <a href="#overview">速覽</a>
+    <a href="#detail">各國詳情</a>
+    <a href="#compare">比較矩陣</a>
+    <a href="#insights">跨國觀察</a>
+    <a href="#sources">參考資料</a>
+  </div>
+</nav>
+
+<!-- ════════════ 主體 ════════════ -->
+<main class="main">
+
+  <!-- ── 速覽 ── -->
+  <section class="section" id="overview">
+    <div class="section-header">
+      <span class="section-label">Section 01</span>
+      <h2 class="section-title">六國切入角度速覽</h2>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-card fda">
+        <div class="flag-name">
+          <span class="flag">🇺🇸</span>
+          <div>
+            <div class="agency">FDA</div>
+            <div class="agency-sub">Food and Drug Administration</div>
+          </div>
+        </div>
+        <div class="tagline"><strong>內部效能 + 稽查 AI 化</strong><br>ELSA 全機構上線、一日稽查試驗，AI 作為行政加速器。</div>
+      </div>
+      <div class="overview-card ema">
+        <div class="flag-name">
+          <span class="flag">🇪🇺</span>
+          <div>
+            <div class="agency">EMA / HMA</div>
+            <div class="agency-sub">European Medicines Agency</div>
+          </div>
+        </div>
+        <div class="tagline"><strong>數據生態系統 + 立法接軌</strong><br>五年藍圖整合 AI Act、EHDS，以治理為先、工具為輔。</div>
+      </div>
+      <div class="overview-card pmda">
+        <div class="flag-name">
+          <span class="flag">🇯🇵</span>
+          <div>
+            <div class="agency">PMDA</div>
+            <div class="agency-sub">Pharmaceuticals and Medical Devices Agency</div>
+          </div>
+        </div>
+        <div class="tagline"><strong>自適應審查 + 內部 AI 化</strong><br>PACMP 框架允許預定義變更；開發機構專屬 AI 系統。</div>
+      </div>
+      <div class="overview-card nmpa">
+        <div class="flag-name">
+          <span class="flag">🇨🇳</span>
+          <div>
+            <div class="agency">NMPA</div>
+            <div class="agency-sub">National Medical Products Administration</div>
+          </div>
+        </div>
+        <div class="tagline"><strong>市場擴張 + 場景分類</strong><br>涵蓋 19+ 臨床場景；2030 年市場規模 188 億美元目標。</div>
+      </div>
+      <div class="overview-card mhra">
+        <div class="flag-name">
+          <span class="flag">🇬🇧</span>
+          <div>
+            <div class="agency">MHRA</div>
+            <div class="agency-sub">Medicines and Healthcare products Regulatory Agency</div>
+          </div>
+        </div>
+        <div class="tagline"><strong>風險比例原則 + 科技強國</strong><br>五大 AI 白皮書原則；AIaMD 改革；2030 年科技超級強國目標。</div>
+      </div>
+      <div class="overview-card hc">
+        <div class="flag-name">
+          <span class="flag">🇨🇦</span>
+          <div>
+            <div class="agency">Health Canada</div>
+            <div class="agency-sub">Health Canada / PHAC</div>
+          </div>
+        </div>
+        <div class="tagline"><strong>法規鬆綁 + 國際依賴</strong><br>42 項紅帶鬆綁措施；借用 FDA/EMA 審查結果加速上市。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 各國詳情 ── -->
+  <section class="section" id="detail">
+    <div class="section-header">
+      <span class="section-label">Section 02</span>
+      <h2 class="section-title">各國策略詳情</h2>
+    </div>
+
+    <!-- FDA -->
+    <div class="country-block fda">
+      <div class="country-header">
+        <span class="country-flag">🇺🇸</span>
+        <div class="country-info">
+          <div class="country-name">美國 FDA</div>
+          <div class="country-agency">Food and Drug Administration</div>
+        </div>
+        <span class="key-doc-badge">ELSA 上線 2025.06 ｜ 一日稽查 2026.05</span>
+      </div>
+      <div class="country-body">
+        <div class="pillars-row">
+          <span class="pillar-tag tag-internal">✦ ELSA 全機構 AI 工具</span>
+          <span class="pillar-tag tag-internal">✦ 風險模型稽查優先化</span>
+          <span class="pillar-tag tag-guidance">✦ AI 藥物開發草案指引 2025</span>
+          <span class="pillar-tag tag-strategy">✦ NIST AI Safety Institute 合作</span>
+        </div>
+        <p class="country-summary">
+          2025 年 6 月，FDA 提前推出全機構生成式 AI 工具 <strong>ELSA</strong>（Large Language Model，GovCloud 架構），用於加速臨床方案審查、不良事件摘要、標籤比較、法規文件分析。模型不以廠商送件資料訓練，確保資料隔離。
+          <br><br>
+          同步推動「<strong>一日稽查評估</strong>」試驗（2026 年 4 月啟動，5 月公告），利用 AI 風險評分模型識別優先稽查目標，截至 2026 年 4 月底完成約 46 件評估，多數結果為 No Action Indicated（NAI）。此模式不取代標準稽查，而是以短時集中篩查擴大稽查覆蓋面，同時蒐集設施風險數據供未來模型訓練。
+          <br><br>
+          監管方向鮮明：<em>AI 作為內部效能工具</em> + <em>以風險為基礎的外部稽查</em>。整體為行政效能型，非直接改變審查標準。
+        </p>
+      </div>
+    </div>
+
+    <!-- EMA -->
+    <div class="country-block ema">
+      <div class="country-header">
+        <span class="country-flag">🇪🇺</span>
+        <div class="country-info">
+          <div class="country-name">歐盟 EMA / HMA</div>
+          <div class="country-agency">European Medicines Agency / Heads of Medicines Agencies</div>
+        </div>
+        <span class="key-doc-badge">Data and AI to 2028 — 2025.05</span>
+      </div>
+      <div class="country-body">
+        <div class="pillars-row">
+          <span class="pillar-tag tag-data">✦ 六大支柱策略藍圖</span>
+          <span class="pillar-tag tag-data">✦ DARWIN EU® RWD 擴展</span>
+          <span class="pillar-tag tag-guidance">✦ AI Act / EHDS 立法接軌</span>
+          <span class="pillar-tag tag-strategy">✦ AI Observatory 年度報告</span>
+          <span class="pillar-tag tag-guidance">✦ Reflection Paper on AI</span>
+        </div>
+        <p class="country-summary">
+          2025 年 5 月，EMA 與 HMA 聯合發布「<strong>Data and AI in Medicines Regulation to 2028</strong>」工作計畫，由 Network Data Steering Group（NDSG）執行，願景為「透過釋放資料價值，實現可信賴的藥品」。
+          <br><br>
+          <strong>六大支柱</strong>：① 策略與治理（整合 EHDS、AI Act、藥事新法）②數據分析（RWD、臨床試驗數據、合成數據、數位孿生）③ AI 應用工具框架 ④ 國際協作（ICH、ICMRA）⑤ 利害關係人溝通 ⑥ 資料互通與品質。
+          <br><br>
+          2026 年關鍵交付項目：Q1 發布「AI 良好實踐指引原則」、Q2 發布 AI 指引協調路線圖（與 Biotech Act 對齊）、Q4 發布 AI 術語詞彙表、啟動六個月 AI 方法實驗循環。EMA Scientific Explorer 擴展至公開評估報告搜索、EMRN Prompt Community 建立。
+          <br><br>
+          重視倫理框架與 GDPR/EUDPR/EU AI Act 合規，強調方法論多元性，立法接軌程度在六國中最為深入。
+        </p>
+      </div>
+    </div>
+
+    <!-- PMDA -->
+    <div class="country-block pmda">
+      <div class="country-header">
+        <span class="country-flag">🇯🇵</span>
+        <div class="country-info">
+          <div class="country-name">日本 PMDA</div>
+          <div class="country-agency">Pharmaceuticals and Medical Devices Agency</div>
+        </div>
+        <span class="key-doc-badge">AI Utilization Action Plan — 2025.09</span>
+      </div>
+      <div class="country-body">
+        <div class="pillars-row">
+          <span class="pillar-tag tag-strategy">✦ 機構內部 AI 行動計畫</span>
+          <span class="pillar-tag tag-device">✦ PACMP 自適應 AI 審查框架</span>
+          <span class="pillar-tag tag-strategy">✦ AI WG 跨部門工作小組</span>
+          <span class="pillar-tag tag-internal">✦ 自有 AI 系統開發計畫</span>
+        </div>
+        <p class="country-summary">
+          2025 年 9 月，PMDA 發布「<strong>Action Plan for the Use of AI in Operations</strong>」，明確以「提升全面業務能力」為目標，探索 AI 於審查作業、安全監督、行政事務的應用；12 月成立跨部門 AI Working Group（AI WG），分享各部門 AI 使用經驗，規劃開發機構專屬 AI 系統（PMDA-specific AI）。
+          <br><br>
+          PMDA 最具前瞻性的制度設計是 2023 年建立的 <strong>Post-Approval Change Management Protocol（PACMP）</strong>，允許 AI 醫療器材廠商於首次核准時預先提交演算法變更管理計畫，後續在預核准範圍內的更新免除重新申請。此設計特別適合持續學習型的自適應 AI 系統，在六國中是最有利於 AI 醫材生命週期管理的創新框架。
+          <br><br>
+          整體策略屬「先行制度、後行工具」路線，以監管靈活性為產業創新留白。
+        </p>
+      </div>
+    </div>
+
+    <!-- NMPA -->
+    <div class="country-block nmpa">
+      <div class="country-header">
+        <span class="country-flag">🇨🇳</span>
+        <div class="country-info">
+          <div class="country-name">中國 NMPA</div>
+          <div class="country-agency">National Medical Products Administration</div>
+        </div>
+        <span class="key-doc-badge">AI 應用場景清單 2024.06 ｜ 高端醫械監管 2025</span>
+      </div>
+      <div class="country-body">
+        <div class="pillars-row">
+          <span class="pillar-tag tag-device">✦ Class III AI 器材分類審查</span>
+          <span class="pillar-tag tag-device">✦ 19+ 醫療應用場景</span>
+          <span class="pillar-tag tag-guidance">✦ PIPL 數據跨境規範</span>
+          <span class="pillar-tag tag-device">✦ 高端醫械全生命週期監管</span>
+          <span class="pillar-tag tag-data">✦ 真實世界數據應用擴展</span>
+        </div>
+        <p class="country-summary">
+          以<strong>市場為導向</strong>快速推進，中國 AI 醫療器材市場預計由 2020 年 9 億美元，成長至 2030 年 188 億美元（CAGR 42.5%）。截至 2025 年，NMPA 已核准逾 59 項 Class III AI 醫材，涵蓋 19+ 臨床場景，包括肺結節偵測（11 件，18.6%）、眼科疾病診斷（8 件，13.5%）、肺炎分診（6 件，10.1%）、心血管等。
+          <br><br>
+          2024 年發布 AI 應用場景清單與技術審查指引更新，2025 年推出<strong>高端醫療器材全生命週期監管措施</strong>，聚焦外科機器人、高端醫療影像、AI 醫材及創新生物材料，強化標準化工作（外骨骼機器人、放射性核素成像設備），引入預登記制度與分階段檢查。
+          <br><br>
+          資料監管以個人資訊保護法（PIPL）為核心，敏感健康數據跨境轉移須單獨安全評估。透過 GHWP 建立醫材主動監測國際框架；持續擴大 RWE 於監管決策的應用。
+        </p>
+      </div>
+    </div>
+
+    <!-- MHRA -->
+    <div class="country-block mhra">
+      <div class="country-header">
+        <span class="country-flag">🇬🇧</span>
+        <div class="country-info">
+          <div class="country-name">英國 MHRA</div>
+          <div class="country-agency">Medicines and Healthcare products Regulatory Agency</div>
+        </div>
+        <span class="key-doc-badge">AI Regulatory Strategy to 2030 — 2024.04</span>
+      </div>
+      <div class="country-body">
+        <div class="pillars-row">
+          <span class="pillar-tag tag-strategy">✦ 五大 AI 白皮書原則</span>
+          <span class="pillar-tag tag-device">✦ AI as a Medical Device (AIaMD)</span>
+          <span class="pillar-tag tag-internal">✦ 監管效能 AI 提升</span>
+          <span class="pillar-tag tag-strategy">✦ 科技強國 2030 目標</span>
+        </div>
+        <p class="country-summary">
+          2024 年 4 月，MHRA 發布「AI Regulatory Strategy to 2030」，呼應英國政府白皮書「促進創新的 AI 監管途徑」。五大原則：<strong>① 安全、穩健與可靠性；② 透明度與可解釋性；③ 公平性、問責性與治理；④ 競爭與可及性；⑤ 可申訴性與救濟</strong>。
+          <br><br>
+          MHRA 從三個視角看待 AI：作為 <em>AI 醫材監管者</em>（風險比例式 AIaMD 改革）、作為<em>公共服務機構</em>（提升審查效能）、作為<em>基於第三方證據的決策者</em>（理解產業 AI 應用對證據生成的影響）。
+          <br><br>
+          正推進「風險比例式 AI 醫材監管改革」（AIaMD），與英國 NHS 3.4 億英鎊科技投資計畫銜接，期望藉由監管效能提升讓英國患者更早受益。英國脫歐後獨立監管路線使其在速度與彈性上具有相對優勢。
+        </p>
+      </div>
+    </div>
+
+    <!-- Health Canada -->
+    <div class="country-block hc">
+      <div class="country-header">
+        <span class="country-flag">🇨🇦</span>
+        <div class="country-info">
+          <div class="country-name">加拿大 Health Canada</div>
+          <div class="country-agency">Health Canada / Public Health Agency of Canada</div>
+        </div>
+        <span class="key-doc-badge">Red Tape Reduction Report — 2025.09 ｜ 42 項措施</span>
+      </div>
+      <div class="country-body">
+        <div class="pillars-row">
+          <span class="pillar-tag tag-deregul">✦ 法規鬆綁 42 項措施</span>
+          <span class="pillar-tag tag-device">✦ ML 醫材預市場指引 2025.02</span>
+          <span class="pillar-tag tag-strategy">✦ 國際協作與法規依賴</span>
+          <span class="pillar-tag tag-deregul">✦ 臨床試驗框架現代化</span>
+          <span class="pillar-tag tag-data">✦ 風險分級監管</span>
+        </div>
+        <p class="country-summary">
+          2025 年 7 月，加拿大政府啟動聯邦法規紅帶審查，Health Canada 發布 42 項改革措施，五大主題：① 國際整合與貿易壁壘消除；② 客戶體驗與服務效率；③ 風險分級監管；④ 法規簡化與彈性；⑤ 促進新產品與新技術。
+          <br><br>
+          AI 相關亮點：2025 年 2 月完成<strong>機器學習醫療器材預市場指引</strong>（含預定變更控制計畫 PCCP 概念，採納 IMDRF 術語定義）；計畫於 2026 年夏發布<strong>部長「依賴令」（Reliance Order）</strong>，擴大接受 FDA/EMA 等信任外國監管機構的審查結果，以加速藥品核准；精簡臨床試驗框架，2026 年預計發布監管建議。
+          <br><br>
+          生命科學及生物製造業對加拿大 GDP 貢獻約 176 億加元，整體策略以「<em>降低行政負擔 + 風險分層 + 國際法規整合</em>」為核心，以借力外國監管成果代替自行建構 AI 框架，是六國中最務實的「追隨者策略」。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 比較矩陣 ── -->
+  <section class="section" id="compare">
+    <div class="section-header">
+      <span class="section-label">Section 03</span>
+      <h2 class="section-title">六國 AI 策略比較矩陣</h2>
+    </div>
+    <div style="overflow-x:auto;">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>監管機構</th>
+          <th>核心文件 / 時程</th>
+          <th>AI 切入點</th>
+          <th>內部工具</th>
+          <th>產品 / 立法</th>
+          <th>國際協作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="country-cell">🇺🇸 FDA</td>
+          <td>ELSA 上線 2025.06<br>一日稽查 2026.05</td>
+          <td><span class="tag tag-internal">效能加速</span></td>
+          <td>ELSA LLM（GovCloud）<br>風險評分模型</td>
+          <td>AI 藥物開發草案指引<br>AI 醫材（1,016件核准）</td>
+          <td>NIST AI Safety Institute</td>
+        </tr>
+        <tr>
+          <td class="country-cell">🇪🇺 EMA</td>
+          <td>Data and AI to 2028<br>2025.05 發布</td>
+          <td><span class="tag tag-data">生態系統</span></td>
+          <td>Scientific Explorer<br>AI Assistants（2027）</td>
+          <td>Reflection Paper on AI<br>AI Act / EHDS 接軌</td>
+          <td>ICH、ICMRA、DARWIN EU</td>
+        </tr>
+        <tr>
+          <td class="country-cell">🇯🇵 PMDA</td>
+          <td>AI Action Plan 2025.09<br>PACMP 框架 2023</td>
+          <td><span class="tag tag-strategy">制度創新</span></td>
+          <td>AI WG（2025.12—）<br>機構專屬 AI 系統（規劃中）</td>
+          <td>PACMP 自適應 AI 審查<br>Adaptive AI Regulatory Framework</td>
+          <td>GHWP、IMDRF</td>
+        </tr>
+        <tr>
+          <td class="country-cell">🇨🇳 NMPA</td>
+          <td>AI 場景清單 2024.06<br>高端醫械監管 2025</td>
+          <td><span class="tag tag-device">市場驅動</span></td>
+          <td>—</td>
+          <td>Class III AI 器材審查<br>19+ 臨床場景分類</td>
+          <td>GHWP 主動監測框架</td>
+        </tr>
+        <tr>
+          <td class="country-cell">🇬🇧 MHRA</td>
+          <td>AI Strategy to 2030<br>2024.04 發布</td>
+          <td><span class="tag tag-strategy">風險比例</span></td>
+          <td>審查效能提升（規劃中）</td>
+          <td>AIaMD 改革<br>五大 AI 白皮書原則</td>
+          <td>Access Consortium<br>英國脫歐後獨立路線</td>
+        </tr>
+        <tr>
+          <td class="country-cell">🇨🇦 Health Canada</td>
+          <td>Red Tape Report 2025.09<br>Reliance Order 2026 夏</td>
+          <td><span class="tag tag-deregul">法規鬆綁</span></td>
+          <td>—</td>
+          <td>ML 醫材指引 2025.02<br>臨床試驗框架現代化</td>
+          <td>FDA/EMA 依賴（Reliance）<br>Access Consortium、ICH</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ── 跨國觀察 ── -->
+  <section class="section" id="insights">
+    <div class="section-header">
+      <span class="section-label">Section 04</span>
+      <h2 class="section-title">跨國觀察與洞察</h2>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="ic-num">01</div>
+        <div class="ic-title">共同主軸：內部 AI 化 + 產品框架建立</div>
+        <div class="ic-body">所有六國監管機構均同步推動兩件事：一是引入 AI 於機構內部作業（審查加速、稽查優先化、文件整合），二是建立 AI 產品（尤其 AI 醫材 / SaMD）的監管框架。差異在於各國的切入優先序不同。</div>
+      </div>
+      <div class="insight-card">
+        <div class="ic-num">02</div>
+        <div class="ic-title">FDA：先行動，後評估</div>
+        <div class="ic-body">ELSA 在限期前提前部署且在預算內完成，展現強執行力。一日稽查試驗也是邊推進邊蒐集數據。方向清晰：AI 是行政加速器，審查標準本身不變。對廠商啟示：well-structured 的送件文件會更有競爭力。</div>
+      </div>
+      <div class="insight-card">
+        <div class="ic-num">03</div>
+        <div class="ic-title">EMA：治理先行，工具其次</div>
+        <div class="ic-body">六國中立法接軌最深入——AI Act、EHDS、藥事新法三軌並行。倫理框架（ALTAI 衍生原則）、術語標準化（AI Glossary）、方法論審查（合成數據、數位孿生）均有明確時程，是監管生態系統建設的典型範本。</div>
+      </div>
+      <div class="insight-card">
+        <div class="ic-num">04</div>
+        <div class="ic-title">PMDA PACMP：最具前瞻性的產品制度</div>
+        <div class="ic-body">允許廠商在首次申請時預先提交 AI 演算法變更管理計畫，後續在預核准範圍內的更新免除重審。這在六國中是最有利於持續學習型自適應 AI 系統的制度設計，亦影響 Health Canada ML 醫材指引中的 PCCP 概念。</div>
+      </div>
+      <div class="insight-card">
+        <div class="ic-num">05</div>
+        <div class="ic-title">中國：市場規模驅動監管速度</div>
+        <div class="ic-body">AI 醫療器材市場 CAGR 42.5%，是六國中市場擴張最快的。NMPA 的監管節奏明顯受市場規模牽引——場景清單的快速更新、高端醫械監管的強化，反映的是產業需求而非學術驅動。</div>
+      </div>
+      <div class="insight-card">
+        <div class="ic-num">06</div>
+        <div class="ic-title">加拿大：Reliance 是聰明的追隨者策略</div>
+        <div class="ic-body">以「借用 FDA/EMA 審查結果」代替自行建構 AI 框架，減少重複監管成本，加速藥品上市。這對台灣 TFDA 有參考價值——小型監管機構在 AI 監管資源有限的情況下，善用國際法規依賴機制是可行路徑。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 參考資料 ── -->
+  <section class="section" id="sources">
+    <div class="section-header">
+      <span class="section-label">Section 05</span>
+      <h2 class="section-title">參考資料</h2>
+    </div>
+    <ul class="sources-list">
+      <li>
+        <span class="src-num">01</span>
+        <div class="src-body">
+          <a class="src-title" href="https://www.fda.gov/news-events/press-announcements/fda-launches-agency-wide-ai-tool-optimize-performance-american-people" target="_blank">FDA Launches Agency-Wide AI Tool (ELSA) to Optimize Performance</a>
+          <span class="src-meta">FDA 新聞稿 · 2025 年 6 月 2 日</span>
+        </div>
+      </li>
+      <li>
+        <span class="src-num">02</span>
+        <div class="src-body">
+          <a class="src-title" href="https://www.fda.gov/news-events/press-announcements/fda-launches-one-day-inspectional-assessments-strengthen-and-expand-oversight" target="_blank">FDA Launches One-Day Inspectional Assessments to Strengthen and Expand Oversight</a>
+          <span class="src-meta">FDA 新聞稿 · 2026 年 5 月 6 日</span>
+        </div>
+      </li>
+      <li>
+        <span class="src-num">03</span>
+        <div class="src-body">
+          <a class="src-title" href="https://www.ema.europa.eu/en/documents/work-programme/multi-annual-artificial-intelligence-workplan-2025-2028_en.pdf" target="_blank">EMA/HMA Data and AI in Medicines Regulation to 2028 — Joint Workplan</a>
+          <span class="src-meta">EMA · 2025 年 5 月 7 日發布</span>
+        </div>
+      </li>
+      <li>
+        <span class="src-num">04</span>
+        <div class="src-body">
+          <a class="src-title" href="https://www.ema.europa.eu/en/documents/scientific-guideline/reflection-paper-use-artificial-intelligence-in-medicines-lifecycle_en.pdf" target="_blank">EMA Reflection Paper on the Use of Artificial Intelligence in the Medicines Lifecycle</a>
+          <span class="src-meta">EMA 科學指引文件</span>
+        </div>
+      </li>
+      <li>
+        <span class="src-num">05</span>
+        <div class="src-body">
+          <a class="src-title" href="https://www.pmda.go.jp/english/about-pmda/0023.html" target="_blank">Action Plan for the Use of AI in Operations at the PMDA</a>
+          <span class="src-meta">PMDA 新聞稿 · 2025 年 10 月 10 日 (計畫日期 2025.09.26)</span>
+        </div>
+      </li>
+      <li>
+        <span class="src-num">06</span>
+        <div class="src-body">
+          <a class="src-title" href="https://english.nmpa.gov.cn/2025-10/14/c_1138492.htm" target="_blank">NMPA AI Application Scenarios List (2024 年 6 月) 及後續高端醫械監管措施</a>
+          <span class="src-meta">NMPA · 2024–2025</span>
+        </div>
+      </li>
+      <li>
+        <span class="src-num">07</span>
+        <div class="src-body">
+          <a class="src-title" href="https://www.gov.uk/government/news/mhras-ai-regulatory-strategy-ensures-patient-safety-and-industry-innovation-into-2030" target="_blank">MHRA's AI Regulatory Strategy Ensures Patient Safety and Industry Innovation into 2030</a>
+          <span class="src-meta">MHRA / GOV.UK · 2024 年 4 月 30 日</span>
+        </div>
+      </li>
+      <li>
+        <span class="src-num">08</span>
+        <div class="src-body">
+          <a class="src-title" href="https://www.canada.ca/en/services/health/publications/health-system-services/report-red-tape-reduction.html" target="_blank">Health Canada and the Public Health Agency of Canada's Report on Red Tape Reduction</a>
+          <span class="src-meta">Health Canada · 2025 年 9 月 8 日</span>
+        </div>
+      </li>
+      <li>
+        <span class="src-num">09</span>
+        <div class="src-body">
+          <a class="src-title" href="https://intuitionlabs.ai/articles/fda-draft-guidance-ai-drug-development" target="_blank">FDA Draft Guidance on AI in Drug Development Explained</a>
+          <span class="src-meta">Intuition Labs 分析文章</span>
+        </div>
+      </li>
+      <li>
+        <span class="src-num">10</span>
+        <div class="src-body">
+          <a class="src-title" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12998604/" target="_blank">Approval of AI-Based Medical Devices in China From 2020 to 2025: Retrospective Analysis</a>
+          <span class="src-meta">PMC · 2025</span>
+        </div>
+      </li>
+      <li>
+        <span class="src-num">11</span>
+        <div class="src-body">
+          <a class="src-title" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12598624/" target="_blank">The Future of AI Regulation in Drug Development: A Comparative Analysis</a>
+          <span class="src-meta">PMC / Oxford · 2025</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<!-- ════════════ 頁尾 ════════════ -->
+<footer>
+  <p>本頁內容整理自公開官方文件，供學習參考用途。</p>
+  <p>資料截止日期：2026 年 6 月</p>
+  <p style="margin-top:8px;"><a href="https://gcchu0-jc.github.io/AI-regulation-learning/" target="_blank">← 返回 AI 監管學習首頁</a></p>
+</footer>
+
+</body>
+</html>
