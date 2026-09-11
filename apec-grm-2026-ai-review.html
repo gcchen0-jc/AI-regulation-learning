@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>監理機關的 AI，走到哪裡了 ｜ 2026 APEC GRM CoE Workshop Session 7</title>
+<meta name="description" content="2026 APEC GRM CoE Workshop Day 3 Session 7：TFDA、PMDA、EMA 三場 AI 於法規審查簡報的整理，含 3A 策略、治理架構、用例排序、關鍵時程與迷思對照。">
+<meta property="og:title" content="監理機關的 AI，走到哪裡了">
+<meta property="og:description" content="TFDA、PMDA、EMA 三場 AI 於法規審查簡報的整理｜2026 APEC GRM CoE Workshop Day 3 Session 7">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --bg:#f6f3ec; --bg2:#fffdf8; --card:#ffffff; --line:#e8e2d5;
+    --ink:#23272f; --ink-soft:#525a68; --ink-dim:#8a8f9b;
+    --teal:#0d8a97; --indigo:#5b63d8; --rose:#cf6a4a; --gold:#b1842a; --green:#10916b;
+    --dark:#11141d; --maxw:1080px;
+    --grad:linear-gradient(110deg,#0d8a97 0%,#5b63d8 54%,#cf6a4a 100%);
+    --shadow:0 10px 30px rgba(40,44,60,.07); --shadow-lg:0 22px 50px rgba(40,44,60,.13);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16.5px}
+  img{max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:var(--teal)}
+  :focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    background:rgba(246,243,236,.86);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.4px;color:var(--ink);font-size:15px}
+  .brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .navlinks{display:flex;gap:22px;font-size:14px}
+  .navlinks a{color:var(--ink-soft);text-decoration:none;transition:.2s;white-space:nowrap}
+  .navlinks a:hover{color:var(--teal)}
+  @media(max-width:900px){.navlinks{display:none}}
+
+  /* BUTTONS */
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;text-decoration:none;
+    padding:13px 24px;border-radius:100px;transition:.25s;cursor:pointer;border:1px solid transparent}
+  .btn-p{background:var(--grad);color:#fff;box-shadow:0 10px 26px rgba(91,99,216,.32)}
+  .btn-p:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(91,99,216,.42)}
+  .btn-o{background:transparent;color:#fff;border-color:rgba(255,255,255,.32)}
+  .btn-o:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.6)}
+
+  /* HERO */
+  header{background:var(--dark);color:#eef1f8;position:relative;overflow:hidden;
+    padding:92px 0 78px;text-align:center}
+  header::before{content:"";position:absolute;inset:0;z-index:0;
+    background:radial-gradient(720px 420px at 12% -10%,rgba(13,138,151,.34),transparent 60%),
+      radial-gradient(720px 460px at 90% 0%,rgba(91,99,216,.34),transparent 60%),
+      radial-gradient(700px 500px at 60% 116%,rgba(207,106,74,.22),transparent 60%)}
+  header .wrap{position:relative;z-index:1}
+  .eyebrow{display:inline-block;font-family:"Space Grotesk",sans-serif;font-size:12px;letter-spacing:2.5px;
+    text-transform:uppercase;color:#bfe6ec;border:1px solid rgba(255,255,255,.20);border-radius:100px;
+    padding:7px 17px;margin-bottom:24px;background:rgba(255,255,255,.05)}
+  h1.title{font-family:"Noto Serif TC",serif;font-weight:900;line-height:1.14;font-size:clamp(34px,6.2vw,66px);letter-spacing:.5px;color:#fff;text-wrap:balance}
+  h1.title .g{background:linear-gradient(110deg,#5fd6e3,#a6abff 55%,#ffb59c);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .subtitle{margin:22px auto 0;max-width:700px;font-size:clamp(15.5px,2.2vw,19px);color:#c4ccde;font-weight:300}
+  .hero-q{margin:34px auto 0;max-width:760px;padding:20px 26px;border-radius:16px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);font-size:16.5px;color:#eef1f8}
+  .hero-q b{color:#ffd79a}
+  .hero-btns{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero-meta{margin-top:26px;display:flex;gap:8px 24px;justify-content:center;flex-wrap:wrap;font-size:13px;color:#9aa3bd;font-family:"Space Grotesk",sans-serif}
+  .hero-meta span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--grad)}
+
+  /* WHY-NOW */
+  .whynow{margin-top:-34px;position:relative;z-index:5}
+  .whynow .box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 28px;box-shadow:var(--shadow-lg);
+    display:flex;gap:18px;align-items:flex-start}
+  .whynow .ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#0d8a97,#5b63d8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:"Space Grotesk",sans-serif;font-size:19px}
+  .whynow h4{font-size:16px;margin-bottom:4px;color:var(--ink)}
+  .whynow p{font-size:15px;color:var(--ink-soft);font-weight:300;margin:0}
+  .whynow p b{color:var(--ink);font-weight:600}
+
+  /* SECTION */
+  section{padding:58px 0;position:relative}
+  .sec-h{display:flex;align-items:baseline;gap:13px;margin-bottom:8px;flex-wrap:wrap}
+  .sec-n{font-family:"Space Grotesk",sans-serif;font-size:14px;color:var(--teal);font-weight:700}
+  h2{font-family:"Noto Serif TC",serif;font-size:clamp(24px,4.2vw,38px);font-weight:900;line-height:1.28;color:var(--ink);text-wrap:balance}
+  .lead{color:var(--ink-soft);font-size:16.5px;max-width:780px;margin:14px 0 36px;font-weight:300}
+  .lead strong{color:var(--ink);font-weight:500}
+
+  .reveal{transition:opacity .7s ease,transform .7s ease}
+  html.js .reveal{opacity:0;transform:translateY(24px)}
+  html.js .reveal.vis{opacity:1;transform:none}
+
+  /* CARDS */
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3{grid-template-columns:1fr}}
+  @media(max-width:760px){.g2{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 24px;
+    box-shadow:var(--shadow);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:rgba(13,138,151,.4)}
+  .card h3{font-size:19px;font-weight:700;margin-bottom:7px;color:var(--ink)}
+  .card p{color:var(--ink-soft);font-size:15px;font-weight:300}
+  .card p b{color:var(--ink);font-weight:600}
+  .card p + p{margin-top:10px}
+  .tag{display:inline-block;font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:1px;color:#fff;
+    background:var(--grad);padding:3px 11px;border-radius:100px;font-weight:700;margin-bottom:10px}
+  .tag.t-tfda{background:linear-gradient(110deg,#0d8a97,#10916b)}
+  .tag.t-pmda{background:linear-gradient(110deg,#5b63d8,#0d8a97)}
+  .tag.t-ema{background:linear-gradient(110deg,#cf6a4a,#5b63d8)}
+  .k{font-family:"Space Grotesk",sans-serif;font-size:12.5px;letter-spacing:1.5px;color:var(--teal);text-transform:uppercase;font-weight:700;display:block;margin-bottom:4px}
+  .kbig{font-family:"Space Grotesk",sans-serif;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:30px;display:block;line-height:1.2;margin-bottom:2px}
+
+  .feature{background:linear-gradient(180deg,#fff,#fbf8f1);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .pill{display:inline-flex;align-items:center;gap:7px;background:rgba(13,138,151,.10);color:var(--teal);
+    font-weight:700;font-size:13px;padding:6px 15px;border-radius:100px;margin-bottom:14px}
+
+  /* SPECTRUM */
+  .spectrum{padding:32px 26px;border-radius:20px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
+  .bar{height:14px;border-radius:100px;background:linear-gradient(90deg,#cdd5e6,#0d8a97 30%,#5b63d8 68%,#cf6a4a);position:relative;margin:58px 0 64px}
+  .mk{position:absolute;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:#fff;border:3px solid var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18)}
+  .mk .lab{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:13px;text-align:center}
+  .mk .lab.top{bottom:26px}.mk .lab.bot{top:26px}
+  .mk .lab b{display:block;color:var(--ink);font-weight:700;font-size:14px}
+  .mk .lab span{color:var(--ink-dim);font-size:11.5px}
+  .mk:first-child .lab{left:0;transform:none;text-align:left}
+  .mk:last-child .lab{left:auto;right:0;transform:none;text-align:right}
+  @media(max-width:760px){
+    .mk .lab.top span{display:none}
+    .mk .lab b{font-size:12px}
+    .mk .lab.bot{display:none}
+  }
+
+  /* NUMBERED ROWS */
+  .bn{display:flex;gap:16px;padding:20px 22px;border-radius:16px;background:var(--card);border:1px solid var(--line);margin-bottom:13px;align-items:flex-start;box-shadow:var(--shadow);transition:.3s}
+  .bn:hover{border-color:rgba(177,132,42,.5)}
+  .bn .num{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:15px;color:var(--gold);flex:0 0 auto;width:74px;line-height:1.6}
+  .bn h4{font-size:16.5px;margin-bottom:4px;color:var(--ink)}
+  .bn p{font-size:14.5px;color:var(--ink-soft);font-weight:300;margin:0}
+  .bn .vs{margin-top:8px;font-size:13.5px;color:var(--green);font-weight:400}
+  .bn .vs b{color:var(--green);font-weight:700}
+
+  /* CHIPS */
+  .chips{display:flex;flex-wrap:wrap;gap:12px}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;flex:1 1 220px;box-shadow:var(--shadow)}
+  .chip b{display:block;color:var(--ink);font-size:15px;margin-bottom:2px}
+  .chip span{color:var(--ink-dim);font-size:13px;font-weight:300}
+  .chip .en{font-family:"Space Grotesk",sans-serif;font-size:11px;letter-spacing:1px;color:var(--teal);text-transform:uppercase;font-weight:700;display:block}
+
+  /* MYTH vs FACT */
+  .mf{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr}
+  @media(max-width:680px){.mf{grid-template-columns:1fr}}
+  .mf .m,.mf .f{padding:20px 22px}
+  .mf .m{background:rgba(207,106,74,.06);border-right:1px solid var(--line)}
+  @media(max-width:680px){.mf .m{border-right:none;border-bottom:1px solid var(--line)}}
+  .mf .lbl{font-weight:700;font-size:12.5px;letter-spacing:1px;display:inline-flex;align-items:center;gap:6px;margin-bottom:7px}
+  .mf .m .lbl{color:var(--rose)}.mf .f .lbl{color:var(--teal)}
+  .mf p{font-size:14.5px;color:var(--ink-soft);font-weight:300;margin:0}
+  .mf .f p b{color:var(--ink);font-weight:600}
+
+  .quote{margin:36px 0 4px;padding:30px 34px;border-radius:20px;background:linear-gradient(120deg,rgba(13,138,151,.09),rgba(91,99,216,.09));
+    border:1px solid var(--line);font-family:"Noto Serif TC",serif;font-size:clamp(18px,3vw,25px);line-height:1.6;color:var(--ink);text-align:center}
+  .quote span{color:var(--ink-dim);font-family:"Noto Sans TC",sans-serif;font-size:14px;display:block;margin-top:12px;font-weight:300}
+
+  /* CAMPS */
+  .camp{border-radius:16px;padding:22px;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow)}
+  .camp .h{display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px;margin-bottom:10px;color:var(--ink)}
+  .camp .d{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+  .camp ul{list-style:none;font-size:14px;color:var(--ink-soft);font-weight:300}
+  .camp li{padding:5px 0 5px 17px;position:relative}
+  .camp li::before{content:"\203A";position:absolute;left:2px;color:var(--ink-dim)}
+
+  /* TIMELINE */
+  .tl{position:relative;padding-left:26px}
+  .tl::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--line),var(--teal) 45%,var(--rose))}
+  .tli{position:relative;padding:11px 0 11px 4px;display:grid;grid-template-columns:118px 1fr;gap:16px;align-items:baseline}
+  @media(max-width:620px){.tli{grid-template-columns:1fr;gap:2px}}
+  .tli::before{content:"";position:absolute;left:-25px;top:20px;width:11px;height:11px;border-radius:50%;background:#fff;border:2.5px solid var(--ink-dim)}
+  .tli.future::before{border-color:var(--rose);background:var(--rose)}
+  .tli .d{font-family:"Space Grotesk",sans-serif;font-size:13.5px;font-weight:700;color:var(--teal);font-variant-numeric:tabular-nums}
+  .tli.future .d{color:var(--rose)}
+  .tli .t{font-size:15px;color:var(--ink-soft);font-weight:300}
+  .tli .t b{color:var(--ink);font-weight:600}
+  .tli .org{font-family:"Space Grotesk",sans-serif;font-size:10.5px;letter-spacing:1px;color:var(--ink-dim);border:1px solid var(--line);border-radius:100px;padding:1px 8px;margin-right:7px;white-space:nowrap}
+
+  /* GLOSSARY */
+  .gloss{columns:2;column-gap:18px}
+  @media(max-width:680px){.gloss{columns:1}}
+  .gi{break-inside:avoid;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 18px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .gi b{color:var(--teal);font-size:15px}
+  .gi em{color:var(--ink-dim);font-style:normal;font-size:12px;font-family:"Space Grotesk",sans-serif}
+  .gi p{font-size:13.5px;color:var(--ink-soft);font-weight:300;margin-top:3px}
+
+  /* NOTE */
+  .note{margin-top:10px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:14px;padding:20px 24px;box-shadow:var(--shadow)}
+  .note b.hd{display:block;font-family:"Space Grotesk",sans-serif;font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+  .note p{font-size:14px;color:var(--ink-soft);font-weight:300}
+  .note p + p{margin-top:8px}
+
+  footer{background:var(--dark);color:#c4ccde;padding:52px 0 64px;text-align:center;margin-top:46px}
+  .maker{font-family:"Noto Serif TC",serif;font-size:22px;font-weight:900;letter-spacing:1px;margin-bottom:6px;color:#fff}
+  .maker .g{background:linear-gradient(110deg,#5fd6e3,#a6abff,#ffb59c);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .credit{font-family:"Space Grotesk",sans-serif;letter-spacing:2px;font-size:12.5px;color:#8e98b4;margin-top:6px}
+  footer .fine{font-size:13px;color:#8e98b4;font-weight:300;max-width:640px;margin:16px auto 0}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    html.js .reveal{opacity:1;transform:none}
+  }
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">APEC GRM <b>Session 7</b></div>
+    <div class="navlinks">
+      <a href="#s01">一分鐘看懂</a>
+      <a href="#s02">三方在做什麼</a>
+      <a href="#s03">3A 策略</a>
+      <a href="#s07">迷思 vs 事實</a>
+      <a href="#s09">關鍵時程</a>
+      <a href="#s10">關鍵詞</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">2026 APEC GRM CoE Workshop &middot; Day 3 &middot; Session 7</div>
+    <h1 class="title">監理機關的 AI，<br><span class="g">走到哪裡了</span></h1>
+    <p class="subtitle">TFDA、PMDA、EMA 在同一個上午講了同一件事：法規機關怎麼把 AI 放進審查。三家的路徑不同，底層邏輯卻是同一句話。</p>
+    <div class="hero-q">三份簡報拆開來看是三套做法，疊起來看只有一個共識：<b>AI 在法規場域只能承接可被追溯的那一部分</b>，剩下的必須留在人手上。</div>
+    <div class="hero-btns">
+      <a class="btn btn-p" href="#s02">看三方對照</a>
+      <a class="btn btn-o" href="#s09">看關鍵時程</a>
+    </div>
+    <div class="hero-meta">
+      <span><i class="dot"></i>2026.08.28 台北</span>
+      <span><i class="dot"></i>3 位機關講者</span>
+      <span><i class="dot"></i>TFDA &middot; PMDA &middot; EMA</span>
+    </div>
+  </div>
+</header>
+
+<div class="whynow wrap">
+  <div class="box">
+    <div class="ic">!</div>
+    <div>
+      <h4>為什麼現在要看這個</h4>
+      <p>兩個期限已經在跑：台灣的<b>結構化仿單 2026 年底全品項完成</b>，PMDA 的<b>「AI 使用基本考量」目標 2027 年 3 月發布</b>。前者是送件格式的硬時程，後者可能決定「以 AI 製作的送件文件」要不要揭露。</p>
+    </div>
+  </div>
+</div>
+
+<section id="s01">
+  <div class="wrap">
+    <div class="sec-h"><span class="sec-n">01</span><h2>一分鐘看懂</h2></div>
+    <p class="lead">如果只記四件事，是這四件。</p>
+    <div class="grid g2 reveal">
+      <div class="card">
+        <span class="kbig">01</span>
+        <h3>AI 還沒碰審查判斷</h3>
+        <p>三方所有用例都繞著<b>文件處理</b>轉——檢索、比對、摘要、草擬、查核。沒有一個用例碰觸效益風險評估本身。PMDA 要到 2028 年才評估專門 AI 的技術極限。</p>
+      </div>
+      <div class="card">
+        <span class="kbig">02</span>
+        <h3>準確度的瓶頸在結構化</h3>
+        <p>PMDA 明講：<b>把描述項目結構化之後，生成結果的準確度就提升了</b>。TFDA 的 3A 策略把同一件事寫成順序——沒有 Alignment，Augmentation 的準確度有固定天花板。</p>
+      </div>
+      <div class="card">
+        <span class="kbig">03</span>
+        <h3>變異來自人，不是模型</h3>
+        <p>EMA 的答案不是換模型，是把 prompt 當成<b>受治理的組織資產</b>。同一個工具沒有協調就會被不同人用出不同品質，這是 TFDA「結果一致性」挑戰的實際解法。</p>
+      </div>
+      <div class="card">
+        <span class="kbig">04</span>
+        <h3>人在迴路是宣示，不是控制</h3>
+        <p>三方都把 human in the loop 當防線，<b>卻沒有人說明要怎麼證明「人真的審過了」</b>。草稿品質愈好，審核愈容易退化成橡皮圖章。這是整份內容最大的空白。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="feature" id="s02">
+  <div class="wrap">
+    <div class="sec-h"><span class="sec-n">02</span><h2>三方在做什麼</h2></div>
+    <p class="lead">同一個問題，三種切法：TFDA 從<strong>資料基礎</strong>切，PMDA 從<strong>組織治理</strong>切，EMA 從<strong>用例排序</strong>切。</p>
+    <div class="grid g3 reveal">
+      <div class="card">
+        <span class="tag t-tfda">TFDA &middot; Chinese Taipei</span>
+        <h3>智慧審查與 3A 策略</h3>
+        <p>把檢索、比對、規則檢查、知識庫、生成式 AI 整合進審查工作流，解決效率、文件複雜度、一致性三大挑戰。</p>
+        <p>核心主張是<b>順序</b>：Access → Alignment → Augmentation。已落地的是前兩個 A（ExPRESS、eCTD、結構化仿單），AI 工具多數還在「明年」。</p>
+        <p style="font-size:13.5px;color:var(--ink-dim);margin-top:12px">講者：Po-Wen Yang，藥品組資深技正</p>
+      </div>
+      <div class="card">
+        <span class="tag t-pmda">PMDA &middot; Japan</span>
+        <h3>行動計畫與治理架構</h3>
+        <p>2025 年 9 月發布 AI 運用行動計畫，三階段推進到 2028 年，搭配 CAIO 與兩層工作小組。</p>
+        <p>兩條原則：<b>人在迴路</b>、<b>資訊管理</b>。最實際的成果是與國立癌症研究中心共研，用生成式 AI 草擬審查報告書中的臨床試驗摘要。</p>
+        <p style="font-size:13.5px;color:var(--ink-dim);margin-top:12px">講者：Sakurana Fukuda，AI Action WG 成員</p>
+      </div>
+      <div class="card">
+        <span class="tag t-ema">EMA &middot; EU</span>
+        <h3>用例組合與 Prompt Community</h3>
+        <p>61 個用例以兩軸評分排序：各國主管機關評業務衝擊、EMA 技術專家評技術可行性。</p>
+        <p>另一條線是 <b>Prompt Community</b>——把 prompt 納入生命週期管理，以 AI Playground 沙箱支撐，部署進 EURSNext、IRIS 等法規系統。</p>
+        <p style="font-size:13.5px;color:var(--ink-dim);margin-top:12px">講者：David Filipovic、Paul Zabbal，數位轉型任務小組</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s03">
+  <div class="wrap">
+    <div class="sec-h"><span class="sec-n">03</span><h2>TFDA 的 3A 策略：先後次序不能跳</h2></div>
+    <p class="lead">這是整份內容裡最可操作的框架。<strong>評估任何 AI 導入提案時，先問它踩在哪一個 A 上。</strong></p>
+
+    <div class="spectrum reveal">
+      <div class="bar">
+        <div class="mk" style="left:14%">
+          <div class="lab top"><b>Access</b><span>資料拿得到</span></div>
+          <div class="lab bot"><span style="color:var(--ink-soft)">數位化 &middot; 可追溯 &middot; 進工作流</span></div>
+        </div>
+        <div class="mk" style="left:50%">
+          <div class="lab top"><b>Alignment</b><span>資料對得齊</span></div>
+          <div class="lab bot"><span style="color:var(--ink-soft)">結構化 &middot; 標準化 &middot; 機器可讀</span></div>
+        </div>
+        <div class="mk" style="left:86%">
+          <div class="lab top"><b>Augmentation</b><span>任務被增強</span></div>
+          <div class="lab bot"><span style="color:var(--ink-soft)">審查任務 → 數位工具／AI</span></div>
+        </div>
+      </div>
+
+      <div class="grid g3" style="margin-top:8px">
+        <div>
+          <span class="k">失敗徵兆</span>
+          <p style="font-size:14.5px;color:var(--ink-soft);font-weight:300">還在收 PDF 與紙本，AI 根本沒有輸入。</p>
+        </div>
+        <div>
+          <span class="k">失敗徵兆</span>
+          <p style="font-size:14.5px;color:var(--ink-soft);font-weight:300">準確度上不去，怎麼調 prompt 都一樣。</p>
+        </div>
+        <div>
+          <span class="k">失敗徵兆</span>
+          <p style="font-size:14.5px;color:var(--ink-soft);font-weight:300">工具做出來沒人用，因為融不進日常動線。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="lead" style="margin-top:36px">TFDA 已經落地的實作，全部可以對回三個 A：</p>
+    <div class="chips reveal">
+      <div class="chip"><span class="en">Access</span><b>ExPRESS</b><span>線上送件與審查管理系統。涵蓋臨床試驗、查驗登記、變更登記、展延；推動節奏為試辦 → 鼓勵 → 特定案件強制。</span></div>
+      <div class="chip"><span class="en">Alignment</span><b>eCTD</b><span>2020 指引與驗證指引 → 2021 平台試辦 → 2022 起擴大適用範圍。</span></div>
+      <div class="chip"><span class="en">Alignment</span><b>結構化仿單</b><span>2016 指示藥 → 2021 處方藥 → 2022 新一代查詢系統與 XML 上傳 → 2026 年底全品項完成 → 未來走向 FHIR。</span></div>
+      <div class="chip"><span class="en">Augmentation</span><b>仿單比對檢核工具</b><span>版本比較、學名藥 vs 對照藥、特定內容檢查；未來加生成式 AI 摘要差異並給初步審查建議。</span></div>
+      <div class="chip"><span class="en">Augmentation</span><b>內部知識助理（RAG）</b><span>法規、指引、許可證資料、檢核表匯入知識庫；來源篩選、定期更新、版本控制、品質查核四道管理。明年完成。</span></div>
+      <div class="chip"><span class="en">Augmentation</span><b>AI 輔助文件審查</b><span>明年探索。設計三支柱：工作流程設計、human-in-the-loop、資訊安全（on-premises、存取控制、受保護訓練資料）。</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="s04">
+  <div class="wrap">
+    <div class="sec-h"><span class="sec-n">04</span><h2>PMDA：三階段推進，三層治理</h2></div>
+    <p class="lead">階段以<strong>日本會計年度</strong>切分，所以每一個里程碑都落在 3 月。治理結構刻意設計成「上層快決策、下層橫向交換」。</p>
+
+    <div class="reveal">
+      <div class="bn">
+        <div class="num">2026.03 前</div>
+        <div>
+          <h4>Phase I — 導入與試行</h4>
+          <p>全員可用的通用 AI（檢索、摘要、會議紀錄、翻譯），專門業務啟動 PoC。Microsoft Copilot 已於 2026 年 3 月導入全體人員。</p>
+        </div>
+      </div>
+      <div class="bn">
+        <div class="num">2027.03 前</div>
+        <div>
+          <h4>Phase II — 驗證與評估</h4>
+          <p>檢驗 AI 對專門業務的有效性，評估效率與實用性。同一時間點，「AI 使用基本考量」也預定發布。</p>
+        </div>
+      </div>
+      <div class="bn">
+        <div class="num">2028.03 前</div>
+        <div>
+          <h4>Phase III — 深化與專門化</h4>
+          <p>評估專門 AI 的挑戰、成本與技術極限，並<b>定期再評估</b>。</p>
+          <div class="vs"><b>實務意義：</b>在那之前，機關端的 AI 仍在通用工具與 PoC 階段。不要高估審查端已經在用 AI 的程度。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g3 reveal" style="margin-top:30px">
+      <div class="camp">
+        <div class="h"><i class="d" style="background:var(--teal)"></i>Chief AI Officer</div>
+        <ul>
+          <li>全機構 AI 運用的責任歸屬</li>
+          <li>單一究責點，不分散到各部門</li>
+        </ul>
+      </div>
+      <div class="camp">
+        <div class="h"><i class="d" style="background:var(--indigo)"></i>AI 導入與運用工作小組</div>
+        <ul>
+          <li>執行董事層級成員</li>
+          <li>負責高層快速拍板</li>
+        </ul>
+      </div>
+      <div class="camp">
+        <div class="h"><i class="d" style="background:var(--gold)"></i>AI 運用工作小組</div>
+        <ul>
+          <li>各部門代表，橫跨審查／安全／救濟／行政</li>
+          <li><b>分享成功與失敗</b>，問題隨時上呈</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="lead" style="margin-top:30px">技術面的實況也值得記下來：on-premises 執行環境仍在建置；LLM 採用國立情報學研究所開發的 <b>SIP-jmed-llm</b>；使用非公開資料須取得各公司資料使用同意並簽署保密協定。已知挑戰是<b>幻覺</b>與<b>再現性</b>。</p>
+  </div>
+</section>
+
+<section id="s05">
+  <div class="wrap">
+    <div class="sec-h"><span class="sec-n">05</span><h2>EMA：先排序，再治理 prompt</h2></div>
+    <p class="lead">EMA 不問「AI 能做什麼」，而問<strong>「先做哪一個」</strong>。這個方法可以直接搬到自己的部門。</p>
+
+    <div class="grid g2 reveal">
+      <div class="card">
+        <span class="pill">兩軸評分法</span>
+        <h3>61 個用例，只做右上象限</h3>
+        <p>縱軸<b>業務衝擊</b>由各國主管機關（NCA）評，橫軸<b>技術可行性</b>由 EMA 技術專家評。</p>
+        <p style="margin-top:12px;color:var(--ink);font-weight:500;font-size:14.5px">兩軸不可由同一批人評——這是這個方法有效的原因。</p>
+        <p>四大能力群：知識檢索、草擬與摘要、驗證與品質保證、其他能力。既有解方橫跨生命週期：Clinical Trial Map、Scientific Explorer 與 AI assistants、訊號偵測、ePI、歐洲藥品短缺監測平台。</p>
+      </div>
+      <div class="card">
+        <span class="pill">Prompt Community</span>
+        <h3>把 prompt 當組織資產，不是個人技巧</h3>
+        <p>三個構成：撰寫最佳實務與指引、使用者互相改進與驗證的回饋迴路、確保安全合規的治理。</p>
+        <p>生命週期：<b>設計規劃 → prompt 開發 → 測試與驗證 → 部署 → 監控與維護 → 退役</b>，由 AI Playground 沙箱支撐，可用不同 LLM 建立、測試、比較。</p>
+        <p style="margin-top:12px;color:var(--ink);font-weight:500;font-size:14.5px">缺了「測試與驗證」這一步，就只是在分享技巧。</p>
+      </div>
+    </div>
+
+    <p class="lead" style="margin-top:36px">品保用例的實作結構可以直接照抄：</p>
+    <div class="chips reveal">
+      <div class="chip"><span class="en">01</span><b>Prompt Library</b><span>作為評估骨幹，確保評估標準一致、prompt 的產生與使用邏輯統一。</span></div>
+      <div class="chip"><span class="en">02</span><b>Checklist Support</b><span>用 AI 指引協助查核卷宗的關鍵要素。</span></div>
+      <div class="chip"><span class="en">03</span><b>File Access</b><span>讓人上傳草稿報告或背景摘要，工具協助抽取重點與章節結構。</span></div>
+    </div>
+
+    <div class="note reveal" style="margin-top:22px">
+      <b class="hd">Prompt 設計的關鍵細節</b>
+      <p>EMA 的品保 prompt 明確限定只評估某一個特定章節，並要求<b>每一題驗證問題都必須獨立執行</b>——不得合併、不得壓縮、不得跨題分配注意力，輸出不得摘要或截斷。</p>
+      <p>這就是「結構化」的實作版本：不是把文件切碎，是把<b>評估動作</b>切碎。PMDA 在審查報告端獨立得到同一個結論。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s06">
+  <div class="wrap">
+    <div class="sec-h"><span class="sec-n">06</span><h2>五大實作挑戰：拿來當稽核清單</h2></div>
+    <p class="lead">TFDA 列的這五項不是技術規格，是<strong>信任條件</strong>。導入自家工具時逐項自問一次。</p>
+    <div class="chips reveal">
+      <div class="chip"><span class="en">Accuracy</span><b>準確</b><span>可靠且有證據支持。</span></div>
+      <div class="chip"><span class="en">Stability</span><b>穩定</b><span>同樣的輸入給出一致的結果。</span></div>
+      <div class="chip"><span class="en">Traceability</span><b>可追溯</b><span>來源與判斷依據清楚。</span></div>
+      <div class="chip"><span class="en">Security</span><b>安全</b><span>保護機密與敏感資訊。</span></div>
+      <div class="chip"><span class="en">Integration</span><b>融入流程</b><span>能嵌進日常審查作業，不是另開一套。</span></div>
+    </div>
+    <div class="quote reveal">「AI 在法規場域的門檻，不是做不做得到，而是能不能被稽核。」
+      <span>這五項全部通過，工具才進得了審查室</span>
+    </div>
+  </div>
+</section>
+
+<section class="feature" id="s07">
+  <div class="wrap">
+    <div class="sec-h"><span class="sec-n">07</span><h2>迷思 vs 事實</h2></div>
+    <p class="lead">這六組是把三份簡報對讀之後浮出來的落差。左邊是常見的理解，右邊是簡報裡真正說的。</p>
+
+    <div class="reveal">
+      <div class="mf">
+        <div class="m"><div class="lbl">✕ 迷思</div><p>法規機關已經在用 AI 做審查決定了。</p></div>
+        <div class="f"><div class="lbl">✓ 事實</div><p>三方所有用例都繞著<b>文件處理</b>轉，沒有一個碰觸效益風險判斷。PMDA 到 2028 年才評估專門 AI 的技術極限。</p></div>
+      </div>
+      <div class="mf">
+        <div class="m"><div class="lbl">✕ 迷思</div><p>有「人在迴路」就安全了。</p></div>
+        <div class="f"><div class="lbl">✓ 事實</div><p>它是原則宣示，<b>不是驗證過的控制措施</b>。沒有人說明要怎麼證明人真的審過了。草稿愈好，審核愈容易變成橡皮圖章。</p></div>
+      </div>
+      <div class="mf">
+        <div class="m"><div class="lbl">✕ 迷思</div><p>AI 準確度不夠，是因為模型不夠好。</p></div>
+        <div class="f"><div class="lbl">✓ 事實</div><p>排查順序是：<b>先看輸入有沒有結構化</b>（PMDA），<b>再看 prompt 有沒有被治理</b>（EMA），最後才考慮換模型。</p></div>
+      </div>
+      <div class="mf">
+        <div class="m"><div class="lbl">✕ 迷思</div><p>AI 判斷和資深審查員高度一致，代表品質好。</p></div>
+        <div class="f"><div class="lbl">✓ 事實</div><p>一致性不等於正確性。若知識庫內嵌過時的審查慣例，AI 會讓錯誤<b>更一致地重現</b>。三份簡報都沒有處理「一致地錯」的偵測。</p></div>
+      </div>
+      <div class="mf">
+        <div class="m"><div class="lbl">✕ 迷思</div><p>這些都是機關內部效率，跟申請者無關。</p></div>
+        <div class="f"><div class="lbl">✓ 事實</div><p>兩條線直接打到申請者：<b>結構化仿單 2026 年底全品項完成</b>，以及 PMDA 2027 年 3 月的「AI 使用基本考量」可能涉及送件文件的 AI 揭露。</p></div>
+      </div>
+      <div class="mf">
+        <div class="m"><div class="lbl">✕ 迷思</div><p>FDA 已經靠 AI 把審查時間砍到幾分鐘。</p></div>
+        <div class="f"><div class="lbl">✓ 事實</div><p>那是 PMDA 簡報<b>引用的二手資訊</b>（Elsa，2025.06），且是在預算刪減與 18% 人力縮編的脈絡下推動。對外引用時要標明來源層級。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s08">
+  <div class="wrap">
+    <div class="sec-h"><span class="sec-n">08</span><h2>三方獨立長出的同一件事</h2></div>
+    <p class="lead">三個機關沒有互相參照，卻在三個地方得到同一個結論。這三條是最值得帶走的。</p>
+    <div class="grid g3 reveal">
+      <div class="card">
+        <span class="k">共通原理 01</span>
+        <h3>先劃安全區，再談規模化</h3>
+        <p>TFDA 的 on-premises 與存取控制、PMDA 的安全可控內部環境與保密協定、EMA 的 AI Playground 沙箱。</p>
+        <p style="margin-top:10px;color:var(--ink);font-weight:500;font-size:14.5px">沒有沙箱，就不要開始。</p>
+      </div>
+      <div class="card">
+        <span class="k">共通原理 02</span>
+        <h3>結構化是準確度的前置條件</h3>
+        <p>TFDA 從送件端做（eCTD、結構化仿單、XML），PMDA 在審查報告端發現同一件事，EMA 則是把評估動作結構化。</p>
+        <p style="margin-top:10px;color:var(--ink);font-weight:500;font-size:14.5px">結構化不是為了整齊，是為了準確。</p>
+      </div>
+      <div class="card">
+        <span class="k">共通原理 03</span>
+        <h3>要有橫向學習迴路</h3>
+        <p>PMDA 的 AI 運用工作小組明寫「分享成功與失敗」，EMA 的 Prompt Community 核心是使用者互相驗證的回饋迴路。</p>
+        <p style="margin-top:10px;color:var(--ink);font-weight:500;font-size:14.5px">AI 能力的邊界是隱性知識，寫成規定沒有用。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="s09">
+  <div class="wrap">
+    <div class="sec-h"><span class="sec-n">09</span><h2>關鍵時程</h2></div>
+    <p class="lead">把三方的日期疊在同一條線上之後，會看到一件事：<strong>產業的 AI 採用曲線領先監管機關約一到兩年</strong>。日本企業 2025 年春天已有 56% 在使用生成式 AI，而 PMDA 的政策文件要到 2027 年 3 月。紅點為尚未到期的里程碑。</p>
+    <div class="tl reveal">
+      <div class="tli"><div class="d">2016</div><div class="t"><span class="org">TFDA</span>指示藥統一仿單範本上路，<b>結構化仿單的起點</b></div></div>
+      <div class="tli"><div class="d">2020</div><div class="t"><span class="org">TFDA</span>eCTD 指引與驗證指引發布</div></div>
+      <div class="tli"><div class="d">2021</div><div class="t"><span class="org">TFDA</span>eCTD 平台試辦；處方藥納入結構化仿單</div></div>
+      <div class="tli"><div class="d">2022</div><div class="t"><span class="org">TFDA</span>新一代藥品仿單查詢系統上線，改以 XML 上傳；eCTD 擴大適用</div></div>
+      <div class="tli"><div class="d">2025.03</div><div class="t"><span class="org">JAPAN</span>總務省與經產省發布《AI 事業指引》</div></div>
+      <div class="tli"><div class="d">2025.05</div><div class="t"><span class="org">JAPAN</span>公部門生成式 AI 採購與運用指引發布</div></div>
+      <div class="tli"><div class="d">2025.06.02</div><div class="t"><span class="org">FDA</span>發布院內生成式 AI 工具 <b>Elsa</b>（PMDA 簡報引用）</div></div>
+      <div class="tli"><div class="d">2025.09</div><div class="t"><span class="org">JAPAN</span>AI 推進法全面施行；內閣設 AI 戰略本部與專責大臣</div></div>
+      <div class="tli"><div class="d">2025.09.26</div><div class="t"><span class="org">PMDA</span>發布《AI 運用行動計畫》</div></div>
+      <div class="tli"><div class="d">2026.01.14</div><div class="t"><span class="org">FDA×EMA</span>共同發布 <b>Guiding Principles of Good AI Practice in Drug Development</b></div></div>
+      <div class="tli"><div class="d">2026.03</div><div class="t"><span class="org">PMDA</span>Phase I 完成；Copilot 導入全體人員</div></div>
+      <div class="tli"><div class="d">2026.05.25</div><div class="t"><span class="org">PMDA</span>「AI 使用基本考量」專案小組啟動</div></div>
+      <div class="tli"><div class="d">2026.08.28</div><div class="t"><span class="org">APEC</span>本場研討會（Day 3 Session 7）</div></div>
+      <div class="tli future"><div class="d">2026 年底</div><div class="t"><span class="org">TFDA</span><b>結構化仿單全品項完成</b>——對申請者最直接的時程壓力</div></div>
+      <div class="tli future"><div class="d">2027.03</div><div class="t"><span class="org">PMDA</span><b>「AI 使用基本考量」目標發布</b>；Phase II 驗證與評估完成</div></div>
+      <div class="tli future"><div class="d">2028.03</div><div class="t"><span class="org">PMDA</span>Phase III 深化與專門化完成</div></div>
+      <div class="tli future"><div class="d">2028</div><div class="t"><span class="org">EMA</span>建立透明且有效的歐盟臨床試驗平台；進行 AI 輔助審查的實務試驗</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="s10">
+  <div class="wrap">
+    <div class="sec-h"><span class="sec-n">10</span><h2>十二個關鍵詞</h2></div>
+    <p class="lead">開會或寫信時會用到的專名，保留機關的原始用語。</p>
+    <div class="gloss reveal">
+      <div class="gi"><b>Intelligent Review</b> <em>智慧審查</em><p>把數位技術整合進審查工作流的整體概念，TFDA 用語。六元件：資訊檢索、文件比對、關鍵字查詢、規則檢查、知識庫、生成式 AI。</p></div>
+      <div class="gi"><b>3A Strategy</b> <em>TFDA</em><p>Access → Alignment → Augmentation。AI 落地的三段次序，跳步就會失敗。</p></div>
+      <div class="gi"><b>ExPRESS</b> <em>TFDA</em><p>線上送件與審查管理系統，涵蓋臨床試驗、查驗登記、變更登記、展延。</p></div>
+      <div class="gi"><b>Structured Package Insert</b> <em>結構化仿單</em><p>以統一範本與 XML 格式提交的仿單。2026 年底台灣全品項完成，未來走向 FHIR。</p></div>
+      <div class="gi"><b>RAG</b> <em>檢索增強生成</em><p>TFDA 內部知識助理的架構：法規、指引、許可證資料、檢核表 → 知識庫 → 助理。四道資料管理：來源篩選、定期更新、版本控制、品質查核。</p></div>
+      <div class="gi"><b>Human in the loop</b> <em>PMDA 原則一</em><p>AI 產草稿、人做決定，責任永遠留在人身上。</p></div>
+      <div class="gi"><b>Information management</b> <em>PMDA 原則二</em><p>只在安全可控的內部環境使用 AI；內規與員工素養同步養成。</p></div>
+      <div class="gi"><b>CAIO</b> <em>Chief AI Officer</em><p>PMDA 治理架構的頂層，全機構 AI 運用的單一究責點。</p></div>
+      <div class="gi"><b>SIP-jmed-llm</b> <em>PMDA</em><p>日本國立情報學研究所（NII）開發的大型語言模型，PMDA 在 on-premises 環境採用。</p></div>
+      <div class="gi"><b>Prompt Community</b> <em>EMA</em><p>把 prompt 當受治理組織資產的協作生態：最佳實務、回饋迴路、安全合規治理。</p></div>
+      <div class="gi"><b>AI Playground</b> <em>EMA</em><p>prompt 管理與測試的沙箱工具，可用不同 LLM 建立、測試、驗證、監控與比較 prompt。</p></div>
+      <div class="gi"><b>EMRN / NCA</b> <em>EMA</em><p>歐盟藥品法規網絡，以及各會員國主管機關。61 個用例的業務衝擊由 NCA 評分。</p></div>
+    </div>
+
+    <div class="note reveal" style="margin-top:34px">
+      <b class="hd">範圍與限制</b>
+      <p>本頁為 2026 APEC GRM CoE Workshop（2026.08.26–28，台北）Day 3 Session 7 三場簡報之整理與詮釋，<b>非法規、指引或公告，亦非任何主管機關的正式立場</b>。簡報由機關人員以職務身分發表，屬現況分享與未來規劃，隨時可能改變。實際送件與法規遵循請以 TFDA、PMDA、EMA 各自的現行公告版本為準。</p>
+      <p>關於美國 FDA 的敘述（Elsa 工具、審查時間與人力變動）以及 PwC 日本調查數據，均為 PMDA 簡報中的引用，非第一人稱說法。EMA 的 61 個用例僅有分類與評分方法，完整清單不在簡報中。三場簡報均未涵蓋：申請者端該如何配合、AI 產製送件文件如何被看待、AI 作為產品本身（AI/ML 醫材）的審查基準。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="maker">監理機關的 AI，<span class="g">走到哪裡了</span></div>
+    <div class="credit">APEC GRM CoE WORKSHOP &middot; DAY 3 &middot; SESSION 7</div>
+    <p class="fine">資料來源：2026 APEC Good Registration Management Center of Excellence Workshop 官方議程手冊。主辦：衛生福利部食品藥物管理署；協辦：APEC 法規調和指導委員會、PMDA、APAC。本頁為學習用整理，非官方文件。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(els, function(e){ e.classList.add('vis'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting) { en.target.classList.add('vis'); io.unobserve(en.target); }
+    });
+  }, {rootMargin: '0px 0px -40px 0px', threshold: 0.04});
+  Array.prototype.forEach.call(els, function(e){ io.observe(e); });
+})();
+</script>
+
+</body>
+</html>
